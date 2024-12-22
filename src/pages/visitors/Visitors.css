@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Filter Section */
+  .filter-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .search-box {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .filter {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn.apply {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btn.clear {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Table Section */
+  .enquiry-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .enquiry-table thead tr {
+    background-color: #4caf50;
+    color: white;
+    text-align: left;
+  }
+  
+  .enquiry-table th,
+  .enquiry-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .enquiry-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .enquiry-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
