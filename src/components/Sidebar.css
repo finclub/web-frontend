@@ -1,0 +1,104 @@
+.sidebar {
+  width: 150px;
+  height: 100vh;
+  background-color: #333;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  position: fixed;
+  /* Ensures it sticks to the side */
+  left: 0;
+  /* Ensure sidebar is visible by default on larger screens */
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.sidebar nav ul li {
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  /* Center items vertically */
+}
+
+.sidebar.open nav ul li {
+  flex-direction: row;
+  /* Keep text beside icon when expanded */
+}
+
+.sidebar:not(.open) {
+  width: 75px;
+  /* Collapsed width */
+}
+
+/*
+.sidebar:not(.open) nav ul li {
+    flex-direction: column;
+    // Stack text below icon when collapsed 
+    text-align: center;
+    // Center the text below the icon 
+}
+
+.sidebar nav ul li .icon {
+    margin-right: 10px;
+    // Space between icon and text in expanded mode 
+}
+
+.sidebar:not(.open) nav ul li .icon {
+    margin-right: 0;
+    // Remove right margin in collapsed mode 
+    margin-bottom: 5px;
+    // Space between icon and text when collapsed 
+}
+
+*/
+
+.sidebar:not(.open) nav ul li .text {
+  display: none;
+  /* Hide text when sidebar is collapsed */
+}
+
+.sidebar .toggle-btn {
+  background-color: #666;
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    /* Sidebar is hidden by default */
+    left: -150px;
+    /* Hide sidebar off-screen */
+  }
+
+  .sidebar.open {
+    width: 150px;
+    /* Show full sidebar when opened */
+    left: 0;
+    /* Bring sidebar into view */
+  }
+
+  .sidebar:not(.open) {
+    width: 0;
+    /* Keep sidebar hidden when not open */
+  }
+
+  .sidebar .toggle-btn {
+    display: block;
+    /* Ensure the toggle button is always visible */
+    position: absolute;
+    top: 0;
+    /* Position toggle button at top of the viewport */
+    left: 100%;
+    /* Position toggle button outside the sidebar */
+  }
+}

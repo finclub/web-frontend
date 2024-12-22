@@ -1,4 +1,6 @@
-import './Visitors.css';
+
+import Layout from '../../layouts/Layout'
+import './Visitors.css'
 
 const Visitors = () => {
   // Sample Data
@@ -14,7 +16,7 @@ const Visitors = () => {
       lead_type: 'Hot',
       status: 'Enquiry',
       last_updated: '24-Jul-2024',
-      remarks: 'Enquiry Created',
+      remarks: 'Enquiry Created'
     },
     {
       id: 2,
@@ -27,12 +29,13 @@ const Visitors = () => {
       lead_type: 'Hot',
       status: 'Enquiry',
       last_updated: '24-Jul-2024',
-      remarks: 'Enquiry Created',
-    },
+      remarks: 'Enquiry Created'
+    }
     // Add more data here...
-  ];
+  ]
 
-  return (
+  return (<>
+    <Layout />
     <div className="container">
       <h1 className="title">Enquiry Management</h1>
 
@@ -92,7 +95,8 @@ const Visitors = () => {
         </tbody>
       </table>
     </div>
-  );
-};
+  </>
+  )
+}
 
-export default Visitors;
+export default Visitors

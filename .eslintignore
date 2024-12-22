@@ -1,0 +1,25 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore built files
+build/
+dist/
+out/
+public/
+
+# Ignore configuration files
+
+.eslintrc.json
+.eslintignore
+
+package.json
+package-lock.json
+
+
+
+# Ignore specific files or patterns
+src/index.js
+src/reportWebVitals.js
+
+# Ignore whole codebase
+<!-- **/* -->
