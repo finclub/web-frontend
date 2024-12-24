@@ -1,0 +1,10 @@
+#main {
+  transition: all 0.3s;
+  margin-top: 60px;
+  padding: 20 px 30px;
+}
+@media (max-width: 119xpx) {
+  #main {
+    padding: 20px;
+  }
+}

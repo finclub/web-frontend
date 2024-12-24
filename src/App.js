@@ -1,33 +1,28 @@
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
-import Signup from './pages/authentication/Signup'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import MainLayout from './components/MainLayout'
+import Dashboard from './pages/Dashboard'
 import Visitors from './pages/visitors/Visitors'
-// import Dashboard from './pages/dashboard/Dashboard'
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
+import Members from './pages/Members'
+import Finance from './pages/Finance'
+import Profile from './pages/Profile'
+// import Login from './pages/Login'
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Sidebar />
+      <Router>
         <Routes>
-          <Route>
-            <Route path="/" element={<Navigate replace to="/dashboard" />} />
-            {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-            <Route path="/visitors" element={<Visitors />} />
-            <Route path="/signup" element={<Signup />} />
-            {/* <Route
-              path="/invoice/:modelId"
-              element={
-                <Protected>
-                  <Invoice />
-                </Protected>
-              }
-            /> */}
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="visitors" element={<Visitors />} />
+            <Route path="members" element={<Members />} />
+            <Route path="finance" element={<Finance />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
+          {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
-      </BrowserRouter>
+      </Router>
     </>
   )
 }

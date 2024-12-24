@@ -35,7 +35,7 @@ const Visitors = () => {
   return (
     <>
       <div className="container">
-        <h1 className="title">Enquiry Management</h1>
+        <h1 className="title">Visitors+-</h1>
 
         {/* Filter Section */}
         <div className="filter-section">

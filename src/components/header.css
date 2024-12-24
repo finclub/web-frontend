@@ -1,20 +1,23 @@
 .header {
+  display: flex;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1030;
-  display: flex;
   align-items: center;
-
   transition: all 0.5s;
-  height: 60px;
+  z-index: 1030;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: var(--header-bg-color);
   padding-left: 20px;
+  height: 45px;
 }
-
 .header .toggle-sidebar-btn {
-  font-size: 32px;
-  padding-left: 10px;
+  outline: none;
+  border: none;
+  background-color: var(--header-bg-color);
   cursor: pointer;
+}
+.toggle-sidebar-btn img {
+  height: 16px;
 }

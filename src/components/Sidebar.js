@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import memberIcon from '../assets/icons/member1.png'
+import { navList } from '../data/navList'
 import './sidebar.css'
 
 const Sidebar = () => {
@@ -7,40 +7,20 @@ const Sidebar = () => {
   return (
     <aside id="sidebar" className="sidebar">
       <ul>
-        <li
-          role="button"
-          tabIndex={0}
-          onClick={() => navigate('/dashboard')}
-          onKeyUp={(event) => event.key === 'Enter' && navigate('/dashboard')}
-        >
-          <span className="icon">📊</span>
-          <span className="text">Dashboard</span>
-        </li>
-        <li
-          role="button"
-          tabIndex={0}
-          onClick={() => navigate('/visitors')}
-          onKeyUp={(event) => event.key === 'Enter' && navigate('/visitors')}
-        >
-          <span className="icon">👥</span>
-          <span className="text">Visitors</span>
-        </li>
-        <li
-          role="button"
-          tabIndex={0}
-          onClick={() => navigate('/members')}
-          onKeyUp={(event) => event.key === 'Enter' && navigate('/members')}
-        >
-          <span className="icon">
-            <img
-              width="20px"
-              alt="Members Icon"
-              className="icon-image" // Updated class for better CSS targeting
-              src={memberIcon}
-            />
-          </span>
-          <span className="text">Members</span>
-        </li>
+        {navList.map((nav) => (
+          <li
+            key={nav._id}
+            role="button"
+            tabIndex={nav._id}
+            onClick={() => navigate(nav.path)}
+            onKeyUp={(event) => event.key === 'Enter' && navigate(nav.path)}
+          >
+            <span className="nav-items">
+              <img alt={nav.name} className="icon-image" src={nav.icon} />
+              <span className="text">{nav.name}</span>
+            </span>
+          </li>
+        ))}
       </ul>
     </aside>
   )

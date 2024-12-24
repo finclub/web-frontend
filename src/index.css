@@ -1,12 +1,14 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
-
 :root {
   scroll-behavior: smooth;
   --primary: #4154f1;
   --second: #717ff5;
   --bgcolor: #f6f9ff;
+  --sidebar-bg-color: #40407a;
+  --header-bg-color: #706fd3;
 }
