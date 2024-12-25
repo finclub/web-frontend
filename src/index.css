@@ -2,7 +2,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 :root {
   scroll-behavior: smooth;
@@ -11,4 +12,49 @@
   --bgcolor: #f6f9ff;
   --sidebar-bg-color: #40407a;
   --header-bg-color: #706fd3;
+}
+/*  */
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.col-75 {
+  float: left;
+  width: 75%;
+}
+/* Right column */
+.col-25 {
+  float: left;
+  padding-left: 20px;
+  width: 25%;
+}
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  padding: 20px;
+  width: 100%;
+}
+/* Add a card effect for articles */
+.card {
+  margin-top: 20px;
+  background-color: white;
+}
+/* Clear floats after the columns */
+.row:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+/* Footer */
+.footer {
+  margin-top: 20px;
+  background: #ddd;
+  padding: 20px;
+  text-align: center;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .col-75,
+  .col-25 {
+    padding: 0;
+    width: 100%;
+  }
 }

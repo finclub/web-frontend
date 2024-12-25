@@ -1,7 +1,7 @@
 import visitors from '../assets/icons/call.png'
 import profile from '../assets/icons/profile.png'
 import members from '../assets/icons/members.png'
-import finance from '../assets/icons/finance.png'
+import finances from '../assets/icons/finances.png'
 import help from '../assets/icons/help.png'
 
 export const navList = [
@@ -37,21 +37,21 @@ export const navList = [
   },
   {
     _id: 6,
-    name: 'Finance',
-    icon: finance,
-    path: '/finance'
+    name: 'Finances',
+    icon: finances,
+    path: '/finances/invoices'
   },
   {
     _id: 7,
     name: 'Analytics',
-    icon: finance,
-    path: '/finance'
+    icon: finances,
+    path: '/finances'
   },
   {
     _id: 8,
     name: 'Reports',
-    icon: finance,
-    path: '/finance'
+    icon: finances,
+    path: '/finances'
   },
   {
     _id: 9,

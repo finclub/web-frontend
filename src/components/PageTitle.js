@@ -3,8 +3,8 @@ import './pageTitle.css'
 const PageTitle = ({ page }) => {
   return (
     <>
-      <div className="pagetitle">
-        <h1>{page}</h1>
+      <div className="toptitle">
+        <div className="heading">{page}</div>
         <nav>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">

@@ -1,0 +1,29 @@
+.notice {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.notice .notice-wrap {
+  position: relative;
+  will-change: transform;
+}
+.notice .notice-wrap .content {
+  border: 1px solid #f4e4af;
+  border-left-width: 1px;
+  background-color: #fffaeb;
+  padding: 10px 40px 10px 20px;
+  max-height: 200px;
+  overflow: auto;
+  list-style: none;
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  .notice .notice-wrap .content {
+    font-size: 15px;
+  }
+}
+.content a {
+  border-bottom: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #4184f3;
+}

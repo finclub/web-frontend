@@ -1,0 +1,27 @@
+.page-nav {
+  padding: 0 35px;
+  border-bottom: 1px solid black;
+}
+
+.page-nav a.router-link-active,
+.page-nav a:hover {
+  cursor: pointer;
+  color: #ff5722;
+  border-bottom: 2px solid #ff5722;
+}
+
+.page-nav a.router-link-active {
+  font-weight: 600;
+}
+
+.page-nav a {
+  padding: 14px 16px;
+  margin: 0px 5px;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-decoration: none;
+  color: #ff5722;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

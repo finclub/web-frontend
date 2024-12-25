@@ -3,7 +3,6 @@ import menuIcon from '../assets/icons/menu.png'
 
 const Logo = () => {
   const handleToggleSidebar = () => {
-    console.log(123)
     document.body.classList.toggle('toggle-sidebar')
   }
 

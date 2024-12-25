@@ -1,6 +1,6 @@
 import TopNavBar from '../components/TopNavBar'
 
-const Finance = () => {
+const Revenue = () => {
   const tabs = [
     {
       id: 1,
@@ -22,9 +22,9 @@ const Finance = () => {
   return (
     <>
       <TopNavBar tabs={tabs} />
-      <div>Finance</div>
+      <h1>revenue</h1>
     </>
   )
 }
 
-export default Finance
+export default Revenue

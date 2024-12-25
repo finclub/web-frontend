@@ -1,3 +1,4 @@
+import TopNavBar from '../components/TopNavBar'
 import './Visitors.css'
 
 const Visitors = () => {
@@ -32,10 +33,29 @@ const Visitors = () => {
     // Add more data here...
   ]
 
+  const tabs = [
+    {
+      id: 1,
+      name: 'Invoice',
+      path: '/finances/invoices'
+    },
+    {
+      id: 2,
+      name: 'Dues',
+      path: '/finances/dues'
+    },
+    {
+      id: 3,
+      name: 'Revenue',
+      path: '/finances/revenue'
+    }
+  ]
+
   return (
     <>
+      <TopNavBar tabs={tabs} />
       <div className="container">
-        <h1 className="title">Visitors+-</h1>
+        <h1 className="title">Visitors</h1>
 
         {/* Filter Section */}
         <div className="filter-section">
