@@ -2,6 +2,7 @@ import Stats from '../components/Stats'
 import TopNavBar from '../components/TopNavBar'
 import './Visitors.css'
 import BasicTable from '../components/Table'
+// import ExampleWithLocalizationProvider from '../components/ExampleWithLocalizationProvider'
 
 const Visitors = () => {
   const tabs = [
@@ -30,6 +31,7 @@ const Visitors = () => {
         {/* Table Section */}
         <div className="">
           <BasicTable />
+          {/* <ExampleWithLocalizationProvider /> */}
         </div>
       </section>
     </>

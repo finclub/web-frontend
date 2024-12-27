@@ -15,7 +15,31 @@
   --header-bg-color: #706fd3;
 }
 /*  */
-/* Create two unequal columns that floats next to each other */
+.g-thead-filter-dropdown {
+  width: 100%; /* Ensures the dropdown fills the cell */
+  padding: 2px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  appearance: none; /* Removes default system styling */
+}
+
+.g-thead-filter-dropdown:hover {
+  border-color: #888; /* Darker border on hover for visual feedback */
+}
+
+.g-thead-filter-dropdown:focus {
+  border-color: #0056b3; /* Highlight color when focused */
+  outline: none; /* Removes the default focus outline */
+}
+
+.g-thead-filter-dropdown:active {
+  background-color: #f7f7f7; /* Slightly darker background when pressed */
+}
+
+/* css */
 .container {
   padding: 10px;
 }

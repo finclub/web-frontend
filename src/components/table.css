@@ -44,3 +44,45 @@ tfoot {
 tfoot th {
   font-weight: normal;
 }
+
+/* Toggle column hiding */
+.dropdown-container {
+  position: relative;
+  z-index: 1; /* Ensure dropdown is above other content */
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position directly below the toggle button */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* width: 100%; */
+  border-radius: 4px;
+  padding: 10px;
+  display: block; /* This could also be controlled by React state */
+  z-index: 1000; /* High z-index to float above other elements */
+}
+
+.checkbox-option {
+  margin: 5px 0;
+}
+
+.checkbox-option label {
+  display: block; /* Each label on a new line */
+  cursor: pointer;
+}
+
+.checkbox-option span {
+  margin-left: 5px;
+}

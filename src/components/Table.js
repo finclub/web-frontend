@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useMemo } from 'react'
 import './table.css'
 import {
   useReactTable,
@@ -10,14 +10,17 @@ import {
 } from '@tanstack/react-table'
 import { columnDefWithCheckBox } from './columns'
 import dataJSON from './data.json'
+import FilterFunction from './FilterFunction'
 
 const Table = () => {
-  const finalData = React.useMemo(() => dataJSON, [])
-  const finalColumnDef = React.useMemo(() => columnDefWithCheckBox, [])
+  const finalData = useMemo(() => dataJSON, [])
+  const finalColumnDef = useMemo(() => columnDefWithCheckBox, [])
 
-  const [sorting, setSorting] = React.useState([])
-  const [filtering, setFiltering] = React.useState('')
-  const [rowSelection, setRowSelection] = React.useState({})
+  const [sorting, setSorting] = useState([])
+  const [filtering, setFiltering] = useState('')
+  const [rowSelection, setRowSelection] = useState({})
+  const [columnVisibility, setColumnVisibility] = useState({})
+  const [columnFilters, setColumnFilters] = useState([])
 
   const tableInstance = useReactTable({
     columns: finalColumnDef,
@@ -27,25 +30,87 @@ const Table = () => {
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onRowSelectionChange: setRowSelection,
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       sorting,
       globalFilter: filtering,
-      rowSelection: rowSelection
+      rowSelection: rowSelection,
+      columnVisibility: columnVisibility,
+      columnFilters: columnFilters
     },
     onSortingChange: setSorting,
     onGlobalFilterChange: setFiltering,
-    enableRowSelection: true
+    enableRowSelection: true,
+    onColumnFiltersChange: setColumnFilters
   })
+
+  // Toggle Column Hiding
+  const [isToggleColVisible, setIsToggleColVisible] = useState(false)
+  const toggleVisibility = () => {
+    setIsToggleColVisible(!isToggleColVisible)
+  }
 
   return (
     <>
+      <span className="holdings-selector-wrap">
+        <div className="su-select holdings-selector" name="holdings-selector">
+          <select>
+            <option label="All stocks" value="all">
+              All stocks
+            </option>
+            <option label="Kite only" value="kite">
+              Kite only
+            </option>
+            <option label="Smallcase" value="smallcase">
+              Smallcase
+            </option>
+            <option label="Mutual funds" value="mutualfunds">
+              Mutual funds
+            </option>
+          </select>{' '}
+          <i className="icon icon-chevron-down"></i>
+        </div>
+      </span>
+
       {/* Global Search Filter */}
       <input
         type="text"
         value={filtering}
         onChange={(e) => setFiltering(e.target.value)}
       />
-
+      {/* Global Search End */}
+      {/* Column Hiding Start*/}
+      <div className="dropdown-container">
+        <button onClick={toggleVisibility} className="toggle-button">
+          {isToggleColVisible ? 'Hide Options' : 'Show Options'}
+        </button>
+        {isToggleColVisible && (
+          <div className="dropdown-menu">
+            <label className="checkbox-option">
+              <input
+                type="checkbox"
+                checked={tableInstance.getIsAllColumnsVisible()}
+                onChange={tableInstance.getToggleAllColumnsVisibilityHandler()}
+              />
+              <span>Toggle All</span>
+            </label>
+            {tableInstance.getAllLeafColumns().map((column) => (
+              <div key={column.id}>
+                <label className="checkbox-option">
+                  <input
+                    type="checkbox"
+                    checked={column.getIsVisible()}
+                    onChange={column.getToggleVisibilityHandler()}
+                  />
+                  <span>{column.id}</span>
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <hr />
+      {/* Column Hiding End*/}
       <table>
         <thead>
           {tableInstance.getHeaderGroups().map((headerEl) => {
@@ -53,23 +118,39 @@ const Table = () => {
               <tr key={headerEl.id}>
                 {headerEl.headers.map((columnEl) => {
                   return (
-                    <th
-                      key={columnEl.id}
-                      colSpan={columnEl.colSpan}
-                      onClick={columnEl.column.getToggleSortingHandler()}
-                    >
-                      {columnEl.isPlaceholder
-                        ? null
-                        : flexRender(
-                          columnEl.column.columnDef.header,
-                          columnEl.getContext()
-                        )}
-                      {/* CODE FOR UP AND DOWN SORTING */}
-                      {
-                        { asc: ' -UP🔝', desc: ' -DOWN🔽' }[
-                          columnEl.column.getIsSorted() ?? null
-                        ]
-                      }
+                    <th key={columnEl.id} colSpan={columnEl.colSpan}>
+                      {console.log('columnEl', columnEl)}
+                      {columnEl.isPlaceholder ? null : (
+                        <>
+                          {flexRender(
+                            columnEl.column.columnDef.header,
+                            columnEl.getContext()
+                          )}
+                          {columnEl.column.getCanFilter() && (
+                            <div>
+                              <FilterFunction
+                                column={columnEl.column}
+                                table={tableInstance}
+                              />
+                            </div>
+                          )}
+                        </>
+                      )}
+                      {/* Switch Sorting Buttons */}
+                      {columnEl.column.getCanSort() && (
+                        <span
+                          onClick={columnEl.column.getToggleSortingHandler()}
+                          style={{ cursor: 'pointer', marginLeft: '5px' }}
+                        >
+                          {
+                            {
+                              asc: '🔝',
+                              desc: '🔽',
+                              none: '⇅'
+                            }[columnEl.column.getIsSorted() || 'none']
+                          }
+                        </span>
+                      )}
                     </th>
                   )
                 })}

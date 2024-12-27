@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "first_name": "Leesa",
+    "last_name": "Mulberry",
+    "email": "lmulberry0@seesaa.net",
+    "gender": "Female",
+    "ip_address": "178.22.164.110",
+    "phone": "+501 817 972 2959",
+    "date": "2024-02-11T00:00:00.000Z",
+    "status": true,
+    "avatar": "https://img.icons8.com/glyph-neue/64/accessibility2.png"
+  },
+  {
+    "id": 2,
+    "first_name": "Vaughn",
+    "last_name": "Guiver",
+    "email": "vguiver1@examiner.com",
+    "gender": "Male",
+    "ip_address": "4.166.207.13",
+    "phone": "+51 257 721 8557",
+    "date": "7/19/2024",
+    "status": false,
+    "avatar": "https://img.icons8.com/glyph-neue/64/accessibility2.png"
+  }
+]
