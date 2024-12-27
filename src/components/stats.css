@@ -1,0 +1,44 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-rows: auto auto; /* Two rows */
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.stats > div {
+  background: #f0f0f0;
+  padding: 10px 10px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr); /* Four columns for wider screens */
+    grid-template-rows: auto; /* One row */
+  }
+}
+
+.stats .label {
+  color: #9b9b9b;
+  margin-bottom: 5px;
+  font-size: 0.75rem;
+}
+
+.stats .value {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* @media (min-width: 550px) {
+  .three.columns {
+    width: 22%;
+  }
+}
+@media (min-width: 550px) {
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0;
+  }
+} */

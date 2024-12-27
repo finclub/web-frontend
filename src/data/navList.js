@@ -1,3 +1,4 @@
+import dashboard from '../assets/icons/dashboard.png'
 import visitors from '../assets/icons/call.png'
 import profile from '../assets/icons/profile.png'
 import members from '../assets/icons/members.png'
@@ -8,7 +9,7 @@ export const navList = [
   {
     _id: 1,
     name: 'Dashboard',
-    icon: visitors,
+    icon: dashboard,
     path: '/dashboard'
   },
   {

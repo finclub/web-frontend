@@ -15,7 +15,7 @@
   "overrides": [
     {
       //**->recursive in subdir, ts?(x)->ts or tsx
-      "files": ["src/**/*.ts?(x)", "**/*.js", "**/*.json"],
+      "files": ["src/**/*.ts?(x)", "**/*.js"],
       "rules": {
         "indent": ["warn", 2],
         // "linebreak-style": ["warn", "unix"],

@@ -7,7 +7,7 @@ const Notice = () => {
         <ul className="content">
           <li>
             <span>
-              Markets will remain closed today on account of Christmas.
+              Gym will remain closed today on account of Christmas.
               <a
                 href="https://zerodha.com/marketintel/bulletin/400222/trading-holiday-on-account-of-christmas-2"
                 target="_blank"

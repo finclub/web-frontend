@@ -3,7 +3,8 @@
   margin: 0;
   padding: 0;
   letter-spacing: 0;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  /* font-family: "Helvetica Neue", Arial, sans-serif; */
+  font-family: "Open Sans", sans-serif;
 }
 :root {
   scroll-behavior: smooth;
@@ -15,15 +16,20 @@
 }
 /*  */
 /* Create two unequal columns that floats next to each other */
-/* Left column */
+.container {
+  padding: 10px;
+}
+.row {
+  display: flex;
+}
+.col-100 {
+  width: 100%;
+}
 .col-75 {
-  float: left;
   width: 75%;
 }
-/* Right column */
+
 .col-25 {
-  float: left;
-  padding-left: 20px;
   width: 25%;
 }
 /* Fake image */
