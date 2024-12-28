@@ -9,7 +9,7 @@ import {
   getPaginationRowModel
 } from '@tanstack/react-table'
 import { columnDefWithCheckBox } from './columns'
-import dataJSON from './data.json'
+import dataJSON from '../data/data.json'
 import FilterFunction from './FilterFunction'
 import useOutsideClick from './useOutsideClick'
 
@@ -165,12 +165,32 @@ const Table = () => {
                       <th key={columnEl.id} colSpan={columnEl.colSpan}>
                         {columnEl.isPlaceholder ? null : (
                           <>
-                            {flexRender(
-                              columnEl.column.columnDef.header,
-                              columnEl.getContext()
-                            )}
+                            <div style={{ display: 'flex' }}>
+                              {flexRender(
+                                columnEl.column.columnDef.header,
+                                columnEl.getContext()
+                              )}
+                              {/* Switch Sorting Buttons */}
+                              {columnEl.column.getCanSort() && (
+                                <span
+                                  onClick={columnEl.column.getToggleSortingHandler()}
+                                  style={{
+                                    cursor: 'pointer',
+                                    marginLeft: '5px'
+                                  }}
+                                >
+                                  {
+                                    {
+                                      asc: '🔝',
+                                      desc: '🔽',
+                                      none: '⇅'
+                                    }[columnEl.column.getIsSorted() || 'none']
+                                  }
+                                </span>
+                              )}
+                            </div>
                             {columnEl.column.getCanFilter() && (
-                              <div>
+                              <div className="table-cell-format">
                                 <FilterFunction
                                   column={columnEl.column}
                                   table={tableInstance}
@@ -178,21 +198,6 @@ const Table = () => {
                               </div>
                             )}
                           </>
-                        )}
-                        {/* Switch Sorting Buttons */}
-                        {columnEl.column.getCanSort() && (
-                          <span
-                            onClick={columnEl.column.getToggleSortingHandler()}
-                            style={{ cursor: 'pointer', marginLeft: '5px' }}
-                          >
-                            {
-                              {
-                                asc: '🔝',
-                                desc: '🔽',
-                                none: '⇅'
-                              }[columnEl.column.getIsSorted() || 'none']
-                            }
-                          </span>
                         )}
                       </th>
                     )
@@ -232,55 +237,58 @@ const Table = () => {
 
         {/* Pagination  */}
         <nav className="table-pagination">
-          <select
-            value={tableInstance.options.state.pagination.pageSize}
-            onChange={(e) => tableInstance.setPageSize(e.target.value)}
-            style={{ marginRight: '10px' }}
-          >
-            {[10, 25, 50].map((pageSizeEl) => {
-              return (
-                <option key={pageSizeEl} value={pageSizeEl}>
-                  {pageSizeEl}
-                </option>
-              )
-            })}
-          </select>
-
           <div>
-            <button
-              onClick={() => tableInstance.setPageIndex(0)}
-              disabled={!tableInstance.getCanPreviousPage()}
-            >
-              {'<<'}
-            </button>
-            <button
-              onClick={() => tableInstance.previousPage()}
-              disabled={!tableInstance.getCanPreviousPage()}
-            >
-              Previous Page
-            </button>
+            Showing {tableInstance.options.state.pagination.pageIndex} /
+            {tableInstance.getPageCount() - 1} pages
           </div>
-
           <div>
-            {tableInstance.options.state.pagination.pageIndex} /
-            {tableInstance.getPageCount() - 1}
-          </div>
+            <select
+              value={tableInstance.options.state.pagination.pageSize}
+              onChange={(e) => tableInstance.setPageSize(e.target.value)}
+              style={{ marginRight: '10px' }}
+            >
+              {[10, 25, 50].map((pageSizeEl) => {
+                return (
+                  <option key={pageSizeEl} value={pageSizeEl}>
+                    {pageSizeEl}
+                  </option>
+                )
+              })}
+            </select>
 
-          <div>
-            <button
-              onClick={() => tableInstance.nextPage()}
-              disabled={!tableInstance.getCanNextPage()}
-            >
-              Next Page
-            </button>
-            <button
-              onClick={() =>
-                tableInstance.setPageIndex(tableInstance.getPageCount() - 1)
-              }
-              disabled={!tableInstance.getCanNextPage()}
-            >
-              {'>>'}
-            </button>
+            <div>
+              {/* <button
+                onClick={() => tableInstance.setPageIndex(0)}
+                disabled={!tableInstance.getCanPreviousPage()}
+              >
+                {'<<'}
+              </button> */}
+              <button
+                onClick={() => tableInstance.previousPage()}
+                disabled={!tableInstance.getCanPreviousPage()}
+                className={styles.previous}
+              >
+                {'\u00AB Previous'}
+              </button>
+            </div>
+
+            <div>
+              <button
+                onClick={() => tableInstance.nextPage()}
+                disabled={!tableInstance.getCanNextPage()}
+                className={styles.next}
+              >
+                {'Next \u00BB'}
+              </button>
+              {/* <button
+                onClick={() =>
+                  tableInstance.setPageIndex(tableInstance.getPageCount() - 1)
+                }
+                disabled={!tableInstance.getCanNextPage()}
+              >
+                {'>>'}
+              </button> */}
+            </div>
           </div>
         </nav>
         {/* <input

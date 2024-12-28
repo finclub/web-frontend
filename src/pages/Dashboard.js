@@ -1,12 +1,14 @@
 import Notice from '../components/Notice'
 import VerticalFunnelBar from '../charts/VerticalFunnelBar'
 import styles from './dashboard.module.css'
+import Stats from '../components/Stats'
 
 const Dashboard = () => {
   return (
     <>
       <section className="container">
         <Notice />
+        <Stats />
         <div className={`${styles.leftCol} col-75`}>
           <div className="card">
             <h2>TITLE HEADING</h2>

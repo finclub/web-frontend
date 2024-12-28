@@ -1,4 +1,4 @@
-import Stats from '../components/Stats'
+// import Stats from '../components/Stats'
 import TopNavBar from '../components/TopNavBar'
 import './Visitors.css'
 import BasicTable from '../components/Table'
@@ -27,7 +27,7 @@ const Visitors = () => {
     <>
       <TopNavBar tabs={tabs} />
       <section className="container">
-        <Stats />
+        {/* <Stats /> */}
         {/* Table Section */}
         <BasicTable />
         {/* <ExampleWithLocalizationProvider /> */}

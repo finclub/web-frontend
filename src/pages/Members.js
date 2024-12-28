@@ -27,7 +27,7 @@ const Members = () => {
     <>
       <TopNavBar tabs={tabs} />
       <section className="container">
-        <Stats />
+        {/* <Stats /> */}
         {/* Table Section */}
         <div className="">
           {/* <BasicTable /> */}

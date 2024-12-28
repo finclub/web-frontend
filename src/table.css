@@ -1,0 +1,210 @@
+table {
+  width: 100%;
+  font-size: 12px;
+  overflow: auto;
+}
+
+th,
+td {
+  padding: 5px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  /* min-width: 80px; */
+  max-width: 300px;
+}
+
+/* Smaller devices */
+@media (max-width: 600px) {
+  th,
+  td {
+    min-width: 50px;
+    max-width: 150px;
+  }
+}
+
+th {
+  background-color: #fafafa;
+  color: #333;
+  font-weight: normal;
+}
+
+td {
+  background-color: #fff;
+  color: #666;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+/* table toolbar */
+.table-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border: 2px solid black;
+}
+
+.table-toolbar .right-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-toolbar .left-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Toggle column visibility */
+.dropdown-container {
+  position: relative;
+  z-index: 1; /* Ensure dropdown is above other content */
+}
+
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position directly below the toggle button */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* width: 100%; */
+  border-radius: 4px;
+  padding: 10px;
+  display: block; /* This could also be controlled by React state */
+  z-index: 1000; /* High z-index to float above other elements */
+}
+
+.checkbox-option {
+  margin: 5px 0;
+}
+
+.checkbox-option label {
+  display: block; /* Each label on a new line */
+  cursor: pointer;
+}
+
+.checkbox-option span {
+  margin-left: 5px;
+}
+
+.dropdown-menu.show {
+  position: absolute;
+  /*  Position directly below the toggle button */
+  /* top: 100%; */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  display: block;
+  /* z-index: 1; High z-index to float above other elements */
+}
+
+.dropdown-menu.hide {
+  display: none;
+}
+
+/* cell formatting */
+.table-cell-format {
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 150px; */
+
+  /* white-space: normal;
+  word-wrap: break-word;
+  width: 25%;
+  min-width: 80px;
+  max-width: 200px; */
+}
+
+.image-cell-format {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  max-width: 150px;
+}
+
+.image-cell-format img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+@media (max-width: 480px) {
+  .image-cell-format {
+    flex-direction: column;
+    align-items: start;
+    /* padding-top: 25px; */
+  }
+}
+
+.table-container {
+  overflow: auto;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* table status column */
+.active {
+  background: #cff6dd;
+  color: #1fa750;
+}
+
+.in-active {
+  /* background: #cff6dd; */
+  color: var(--light-red);
+}
+
+.status span {
+  position: relative;
+  border-radius: 30px;
+  padding: 4px 10px 4px 25px;
+}
+
+.status .active:after {
+  background: #23bd5a;
+}
+.status .in-active:after {
+  background: var(--light-red);
+}
+.status span:after {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border-radius: 50%;
+}
+
+/* pagination */
+.table-pagination {
+  margin-top: 15px;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-pagination div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}

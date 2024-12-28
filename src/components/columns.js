@@ -1,73 +1,16 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import IndeterminateCheckbox from './IndeterminateCheckbox'
 
-// export const columnDef = [
-//   {
-//     accessorKey: 'firstName',
-//     cell: (info) => info.getValue(),
-//     id: 'firstName',
-//     size: 150
-//   },
-//   {
-//     accessorFn: (row) => row.lastName,
-//     cell: (info) => info.getValue(),
-//     header: () => <span>Last Name</span>,
-//     id: 'lastName',
-//     size: 150
-//   },
-//   {
-//     accessorKey: 'age',
-//     header: () => 'Age',
-//     id: 'age',
-//     size: 120
-//   },
-//   {
-//     accessorKey: 'visits',
-//     header: () => <span>Visits</span>,
-//     id: 'visits',
-//     size: 120
-//   },
-//   {
-//     accessorKey: 'status',
-//     header: 'Status',
-//     id: 'status',
-//     size: 150
-//   },
-//   {
-//     accessorKey: 'progress',
-//     header: 'Profile Progress',
-//     id: 'progress',
-//     size: 180
-//   }
-// ]
-// export const columnDef = [
-//   {
-//     accessorKey: 'id',
-//     header: 'ID'
-//   },
-//   {
-//     accessorFn: (row) => `${row.first_name} ${row.last_name}`,
-//     header: 'Name'
-//   },
-//   {
-//     accessorKey: 'email',
-//     header: 'Email'
-//   },
-//   {
-//     accessorKey: 'date',
-//     header: 'Date'
-//   }
-// ]
 const columnHelper = createColumnHelper()
 
 export const columnDefWithCheckBox = [
   {
     id: 'select',
     //     cell: ({ getValue }) => {
-    //   return <div className="centered-cell">{getValue()}</div>
+    //   return <div className="table-cell-format">{getValue()}</div>
     // }
     header: ({ table }) => (
-      <div className="centered-cell">
+      <div className="table-cell-format">
         <IndeterminateCheckbox
           {...{
             checked: table.getIsAllRowsSelected(),
@@ -78,7 +21,7 @@ export const columnDefWithCheckBox = [
       </div>
     ),
     cell: ({ row }) => (
-      <div className="centered-cell">
+      <div className="table-cell-format">
         <IndeterminateCheckbox
           {...{
             checked: row.getIsSelected(),
@@ -91,24 +34,28 @@ export const columnDefWithCheckBox = [
     )
   },
   columnHelper.accessor('id', {
-    header: 'Id',
+    header: () => <div className="table-cell-format">Id</div>,
+    cell: ({ getValue, row }) => {
+      return (
+        <>
+          <div className="image-cell-format">
+            <img alt="avatar" src={row.original.avatar} loading="lazy" />
+            <span>{getValue()}</span>
+          </div>
+        </>
+      )
+    },
     enableColumnFilter: false,
     enableSorting: false
   }),
   {
+    accessorKey: 'first_name',
     accessorFn: (row) => `${row.first_name} ${row.last_name}`,
-    header: 'First Name',
+    header: () => <div className="table-cell-format">Name</div>,
     cell: ({ getValue, row }) => {
       return (
         <>
-          <div className="centered-cell">
-            <img
-              alt="avatar"
-              height={30}
-              src={row.original.avatar}
-              loading="lazy"
-              style={{ borderRadius: '50%' }}
-            />
+          <div className="image-col-container">
             <span>{getValue()}</span>
           </div>
         </>
@@ -117,13 +64,13 @@ export const columnDefWithCheckBox = [
   },
   {
     accessorKey: 'gender',
-    header: 'Gender',
+    header: () => <div className="table-cell-format">Gender</div>,
     filterFn: 'equalsString',
     cell: ({ getValue }) => {
-      return <div className="centered-cell">{getValue()}</div>
+      return <div className="table-cell-format">{getValue()}</div>
     }
     // header: ({ column }) => {
-    //   return <div className="centered-cell">{column.columnDef.header}</div>
+    //   return <div className="table-cell-format">{column.columnDef.header}</div>
     // }
     //  column }) => <em>{column.columnDef.header
 
@@ -140,16 +87,16 @@ export const columnDefWithCheckBox = [
   },
   {
     accessorKey: 'email',
-    header: 'Email',
+    header: () => <div className="table-cell-format">Email</div>,
     cell: ({ getValue }) => {
-      return <div className="centered-cell">{getValue()}</div>
+      return <div className="table-cell-format">{getValue()}</div>
     }
   },
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: () => <div className="table-cell-format">Date</div>,
     cell: ({ getValue }) => {
-      return <div className="centered-cell">{getValue()}</div>
+      return <div className="table-cell-format">{getValue()}</div>
     }
     // cell: ({ getValue }) => moment(new Date(getValue())).format('MMM Do YY')
   },
@@ -165,12 +112,12 @@ export const columnDefWithCheckBox = [
   // },
   {
     accessorKey: 'status',
-    header: 'Status',
+    header: () => <div className="table-cell-format">Status</div>,
     cell: ({ getValue }) => {
       const isActive = getValue()
       return (
         <>
-          <div className=" centered-cell status">
+          <div className=" table-cell-format status">
             <span className={`${isActive ? 'active' : 'in-active'}`}>
               {isActive ? 'Active' : 'Inactive'}
             </span>
