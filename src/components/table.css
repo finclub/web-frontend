@@ -86,3 +86,19 @@ tfoot th {
 .checkbox-option span {
   margin-left: 5px;
 }
+
+.dropdown-menu.show {
+  position: absolute;
+  /* top: 100%; Position directly below the toggle button */
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  display: block;
+  /* z-index: 1; High z-index to float above other elements */
+}
+
+.dropdown-menu.hide {
+  display: none;
+}

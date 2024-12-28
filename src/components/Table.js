@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef } from 'react'
 import './table.css'
 import {
   useReactTable,
@@ -11,6 +11,7 @@ import {
 import { columnDefWithCheckBox } from './columns'
 import dataJSON from './data.json'
 import FilterFunction from './FilterFunction'
+import useOutsideClick from './useOutsideClick'
 
 const Table = () => {
   const finalData = useMemo(() => dataJSON, [])
@@ -46,7 +47,15 @@ const Table = () => {
 
   // Toggle Column Hiding
   const [isToggleColVisible, setIsToggleColVisible] = useState(false)
-  const toggleVisibility = () => {
+  const toggleDropdownRef = useRef(null)
+
+  useOutsideClick(toggleDropdownRef, () => {
+    if (isToggleColVisible) {
+      setIsToggleColVisible(false) // Close dropdown when clicking outside
+    }
+  })
+
+  const toggleColVisibility = () => {
     setIsToggleColVisible(!isToggleColVisible)
   }
 
@@ -80,12 +89,22 @@ const Table = () => {
       />
       {/* Global Search End */}
       {/* Column Hiding Start*/}
-      <div className="dropdown-container">
-        <button onClick={toggleVisibility} className="toggle-button">
+      <div className="dropdown-container" ref={toggleDropdownRef}>
+        {/* <button onClick={toggleVisibility} className="toggle-button">
           {isToggleColVisible ? 'Hide Options' : 'Show Options'}
+        </button> */}
+        <button
+          onClick={toggleColVisibility}
+          className={`toggle-button ${
+            isToggleColVisible ? 'button-open' : 'button-closed'
+          }`}
+        >
+          Toggle
         </button>
-        {isToggleColVisible && (
-          <div className="dropdown-menu">
+        {
+          <div
+            className={`dropdown-menu ${isToggleColVisible ? 'show' : 'hide'}`}
+          >
             <label className="checkbox-option">
               <input
                 type="checkbox"
@@ -107,7 +126,7 @@ const Table = () => {
               </div>
             ))}
           </div>
-        )}
+        }
       </div>
       <hr />
       {/* Column Hiding End*/}
