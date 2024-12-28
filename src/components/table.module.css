@@ -1,0 +1,19 @@
+/* toolbar */
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  padding: 5px;
+  width: 200px;
+}
+
+.download {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+/* footer */
+.footer {
+}

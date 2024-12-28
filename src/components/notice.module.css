@@ -2,11 +2,11 @@
   margin-bottom: 20px;
   width: 100%;
 }
-.notice .notice-wrap {
+.noticeWrap {
   position: relative;
   will-change: transform;
 }
-.notice .notice-wrap .content {
+.content {
   border: 1px solid #f4e4af;
   border-left-width: 1px;
   background-color: #fffaeb;
@@ -17,7 +17,7 @@
   font-size: 12px;
 }
 @media (max-width: 767px) {
-  .notice .notice-wrap .content {
+  .content {
     font-size: 15px;
   }
 }

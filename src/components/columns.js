@@ -1,6 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import IndeterminateCheckbox from './IndeterminateCheckbox'
-import moment from 'moment'
+
 // export const columnDef = [
 //   {
 //     accessorKey: 'firstName',
@@ -63,24 +63,31 @@ const columnHelper = createColumnHelper()
 export const columnDefWithCheckBox = [
   {
     id: 'select',
+    //     cell: ({ getValue }) => {
+    //   return <div className="centered-cell">{getValue()}</div>
+    // }
     header: ({ table }) => (
-      <IndeterminateCheckbox
-        {...{
-          checked: table.getIsAllRowsSelected(),
-          indeterminate: table.getIsSomeRowsSelected(),
-          onChange: table.getToggleAllRowsSelectedHandler()
-        }}
-      />
+      <div className="centered-cell">
+        <IndeterminateCheckbox
+          {...{
+            checked: table.getIsAllRowsSelected(),
+            indeterminate: table.getIsSomeRowsSelected(),
+            onChange: table.getToggleAllRowsSelectedHandler()
+          }}
+        />
+      </div>
     ),
     cell: ({ row }) => (
-      <IndeterminateCheckbox
-        {...{
-          checked: row.getIsSelected(),
-          disabled: !row.getCanSelect(),
-          indeterminate: row.getIsSomeSelected(),
-          onChange: row.getToggleSelectedHandler()
-        }}
-      />
+      <div className="centered-cell">
+        <IndeterminateCheckbox
+          {...{
+            checked: row.getIsSelected(),
+            disabled: !row.getCanSelect(),
+            indeterminate: row.getIsSomeSelected(),
+            onChange: row.getToggleSelectedHandler()
+          }}
+        />
+      </div>
     )
   },
   columnHelper.accessor('id', {
@@ -94,13 +101,7 @@ export const columnDefWithCheckBox = [
     cell: ({ getValue, row }) => {
       return (
         <>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1rem'
-            }}
-          >
+          <div className="centered-cell">
             <img
               alt="avatar"
               height={30}
@@ -117,7 +118,15 @@ export const columnDefWithCheckBox = [
   {
     accessorKey: 'gender',
     header: 'Gender',
-    filterFn: 'equalsString'
+    filterFn: 'equalsString',
+    cell: ({ getValue }) => {
+      return <div className="centered-cell">{getValue()}</div>
+    }
+    // header: ({ column }) => {
+    //   return <div className="centered-cell">{column.columnDef.header}</div>
+    // }
+    //  column }) => <em>{column.columnDef.header
+
     // Filter: ({ column }) => {
     //   return (
     //     <input
@@ -131,11 +140,17 @@ export const columnDefWithCheckBox = [
   },
   {
     accessorKey: 'email',
-    header: 'Email'
+    header: 'Email',
+    cell: ({ getValue }) => {
+      return <div className="centered-cell">{getValue()}</div>
+    }
   },
   {
     accessorKey: 'date',
-    header: 'Date'
+    header: 'Date',
+    cell: ({ getValue }) => {
+      return <div className="centered-cell">{getValue()}</div>
+    }
     // cell: ({ getValue }) => moment(new Date(getValue())).format('MMM Do YY')
   },
   // {
@@ -155,13 +170,11 @@ export const columnDefWithCheckBox = [
       const isActive = getValue()
       return (
         <>
-          <button
-            onClick={() =>
-              alert(`Status is ${isActive ? 'Active' : 'Inactive'}`)
-            }
-          >
-            {isActive ? 'Active' : 'Inactive'}
-          </button>
+          <div className=" centered-cell status">
+            <span className={`${isActive ? 'active' : 'in-active'}`}>
+              {isActive ? 'Active' : 'Inactive'}
+            </span>
+          </div>
         </>
       )
     }

@@ -29,10 +29,8 @@ const Visitors = () => {
       <section className="container">
         <Stats />
         {/* Table Section */}
-        <div className="">
-          <BasicTable />
-          {/* <ExampleWithLocalizationProvider /> */}
-        </div>
+        <BasicTable />
+        {/* <ExampleWithLocalizationProvider /> */}
       </section>
     </>
   )

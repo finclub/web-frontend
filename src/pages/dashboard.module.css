@@ -1,0 +1,14 @@
+.rightCol {
+  float: left;
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .rightCol {
+    padding-left: 0;
+  }
+}
+
+.leftCol {
+  float: left;
+}

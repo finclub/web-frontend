@@ -1,10 +1,10 @@
-import './notice.css'
+import styles from './notice.module.css'
 
 const Notice = () => {
   return (
-    <div className="notice">
-      <div className="notice-wrap">
-        <ul className="content">
+    <div className={styles.notice}>
+      <div className={styles.noticeWrap}>
+        <ul className={styles.content}>
           <li>
             <span>
               Gym will remain closed today on account of Christmas.
@@ -13,7 +13,7 @@ const Notice = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                &nbsp;Read more
+                Read more
               </a>
             </span>
           </li>
@@ -22,7 +22,7 @@ const Notice = () => {
           href="#"
           aria-label="Show all notices"
           className="notice-stack-1"
-        ></a>{' '}
+        ></a>
         <a
           href="#"
           aria-label="Show all notices"

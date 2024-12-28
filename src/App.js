@@ -19,9 +19,9 @@ function App() {
             <Route path="visitors" element={<Visitors />} />
             <Route path="members" element={<Members />} />
 
-            <Route path="/finances/invoices" element={<Revenue />} />
-            <Route path="/finances/dues" element={<Revenue />} />
-            <Route path="/finances/revenue" element={<Revenue />} />
+            <Route path="/sales/invoices" element={<Revenue />} />
+            <Route path="/sales/dues" element={<Revenue />} />
+            <Route path="/sales/revenue" element={<Revenue />} />
 
             <Route path="profile" element={<Profile />} />
           </Route>

@@ -34,6 +34,11 @@
   color: #d1d5db;
 }
 
+.sidebar li:focus {
+  background-color: #686098;
+  color: #d1d5db;
+}
+
 .sidebar .nav-items {
   margin-left: 15px;
   display: inline-flex;

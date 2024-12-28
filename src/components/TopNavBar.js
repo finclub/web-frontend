@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import './topNavBar.css'
+import styles from './topNavBar.module.css'
 
 function TopNavBar({ tabs }) {
   return (
-    <nav role="navigation" className="page-nav">
+    <nav role="navigation" className={styles.pageNav}>
       {tabs?.map((tab) => (
         <NavLink
           key={tab.id}

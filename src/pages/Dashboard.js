@@ -1,12 +1,13 @@
 import Notice from '../components/Notice'
-import './dashboard.css'
+import VerticalFunnelBar from '../charts/VerticalFunnelBar'
+import styles from './dashboard.module.css'
 
 const Dashboard = () => {
   return (
     <>
       <section className="container">
         <Notice />
-        <div className="col-75 left-col-dasboard">
+        <div className={`${styles.leftCol} col-75`}>
           <div className="card">
             <h2>TITLE HEADING</h2>
             <h5>Title description, Dec 7, 2017</h5>
@@ -36,15 +37,16 @@ const Dashboard = () => {
             </p>
           </div>
         </div>
-        <div className="col-25 right-col-dasboard">
+        <div className={`${styles.rightCol} col-25`}>
           <div className="card">
-            <h2>About Me</h2>
+            {/* <h2>About Me</h2>
             <div className="fakeimg" style={{ height: '100px' }}>
               Image
             </div>
             <p>
               Some text about me in culpa qui officia deserunt mollit anim..
-            </p>
+            </p> */}
+            <VerticalFunnelBar height="350px" />
           </div>
           <div className="card">
             <h3>Popular Post</h3>

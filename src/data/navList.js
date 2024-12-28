@@ -2,7 +2,7 @@ import dashboard from '../assets/icons/dashboard.png'
 import visitors from '../assets/icons/call.png'
 import profile from '../assets/icons/profile.png'
 import members from '../assets/icons/members.png'
-import finances from '../assets/icons/finances.png'
+import sales from '../assets/icons/sales.png'
 import help from '../assets/icons/help.png'
 
 export const navList = [
@@ -38,21 +38,21 @@ export const navList = [
   },
   {
     _id: 6,
-    name: 'Finances',
-    icon: finances,
-    path: '/finances/invoices'
+    name: 'Sales',
+    icon: sales,
+    path: '/sales/invoices'
   },
   {
     _id: 7,
     name: 'Analytics',
-    icon: finances,
-    path: '/finances'
+    icon: sales,
+    path: '/sales'
   },
   {
     _id: 8,
     name: 'Reports',
-    icon: finances,
-    path: '/finances'
+    icon: sales,
+    path: '/sales'
   },
   {
     _id: 9,

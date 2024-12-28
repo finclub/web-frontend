@@ -1,0 +1,32 @@
+.container {
+  width: 100%; /* Width of the bar */
+  /* height: 400px; Total height of the bar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.segment {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.segment:hover {
+  opacity: 0.8;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.label > span:nth-child(2) {
+  font-size: 0.8em;
+  color: #ddd;
+}

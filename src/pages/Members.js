@@ -1,7 +1,7 @@
 import Stats from '../components/Stats'
 import TopNavBar from '../components/TopNavBar'
 import './Visitors.css'
-import BasicTable from '../components/Table'
+// import BasicTable from '../components/Table'
 import ExampleWithLocalizationProvider from '../components/ExampleWithLocalizationProvider'
 
 const Members = () => {

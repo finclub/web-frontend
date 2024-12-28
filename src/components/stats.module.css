@@ -20,15 +20,18 @@
   }
 }
 
-.stats .label {
+.label {
   color: #9b9b9b;
   margin-bottom: 5px;
   font-size: 0.75rem;
 }
 
-.stats .value {
+.value {
   font-size: 1.125rem;
   font-weight: 700;
+}
+
+.decimal {
 }
 
 /* @media (min-width: 550px) {

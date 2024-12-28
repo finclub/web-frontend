@@ -1,0 +1,30 @@
+/* icons */
+.header-icon {
+  background-image: url("./assets/icons/menu.png");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.search-icon {
+  background-image: url("./assets/icons/search.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.download-icon {
+  background-image: url("./assets/icons/download.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
