@@ -3,18 +3,7 @@
   margin: 0;
   padding: 0;
   letter-spacing: 0;
-  /* font-family: "Helvetica Neue", Arial, sans-serif; */
-  font-family: "Open Sans", sans-serif;
-}
-:root {
-  scroll-behavior: smooth;
-  --primary: #4154f1;
-  --second: #717ff5;
-  --bgcolor: #f6f9ff;
-  --sidebar-bg-color: #40407a;
-  --header-bg-color: #706fd3;
-
-  --light-red: #ff5722;
+  font-family: var(--font-primary);
 }
 
 /* Global reset */
@@ -32,29 +21,18 @@ input[type="search"] {
   /* width: 100%; */
 }
 
-/* table filter */
-.g-thead-filter-dropdown {
-  width: 100%; /* Ensures the dropdown fills the cell */
+input[type="text"],
+select {
+  width: 100%;
   padding: 2px 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-gray);
   border-radius: 4px;
   background-color: white;
+  outline: none;
+}
+
+select {
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  appearance: none; /* Removes default system styling */
-}
-
-.g-thead-filter-dropdown:hover {
-  border-color: #888; /* Darker border on hover for visual feedback */
-}
-
-.g-thead-filter-dropdown:focus {
-  border-color: #0056b3; /* Highlight color when focused */
-  outline: none; /* Removes the default focus outline */
-}
-
-.g-thead-filter-dropdown:active {
-  background-color: #f7f7f7; /* Slightly darker background when pressed */
 }
 
 /* custom css classes */

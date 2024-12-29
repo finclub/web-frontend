@@ -14,7 +14,7 @@
   max-height: 200px;
   overflow: auto;
   list-style: none;
-  font-size: 12px;
+  font: var(--font-notice);
 }
 @media (max-width: 767px) {
   .content {

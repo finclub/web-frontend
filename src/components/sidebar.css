@@ -10,7 +10,7 @@
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: var(--sidebar-bg-color);
+  background-color: var(--color-sidebar-bg);
 
   transition: all 0.3s;
   border-radius: 0px 10px 10px 0px;
@@ -48,8 +48,7 @@
 .sidebar .text {
   visibility: visible;
   color: white;
-  font-weight: 500;
-  font-size: 12px;
+  font: var(--font-sidebar);
   width: 1rem;
 }
 

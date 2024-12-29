@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
-import styles from './table.module.css'
+import './table.css'
 import {
   useReactTable,
   flexRender,
@@ -135,7 +135,7 @@ const Table = () => {
           <div className="left-buttons">
             {/* Global Search Filter */}
             <div>
-              <div className={styles.search}>
+              <div className="search">
                 <span className="search-icon"></span>
                 <input
                   type="search"
@@ -147,7 +147,7 @@ const Table = () => {
             </div>
             {/* Global Search End */}
             <div>
-              <a href="#" className={styles.download}>
+              <a href="#" className="download">
                 <span className="download-icon"></span>
                 <span>Download</span>
               </a>
@@ -155,6 +155,7 @@ const Table = () => {
           </div>
         </div>
 
+        {/*  */}
         <table>
           <thead>
             {tableInstance.getHeaderGroups().map((headerEl) => {
@@ -226,7 +227,6 @@ const Table = () => {
           </tbody>
         </table>
         {/* Selected table */}
-        <hr />
         <div>
           <ul>
             {tableInstance.getSelectedRowModel().flatRows.map((el) => {
@@ -266,7 +266,7 @@ const Table = () => {
               <button
                 onClick={() => tableInstance.previousPage()}
                 disabled={!tableInstance.getCanPreviousPage()}
-                className={styles.previous}
+                className="previous"
               >
                 {'\u00AB Previous'}
               </button>
@@ -276,7 +276,7 @@ const Table = () => {
               <button
                 onClick={() => tableInstance.nextPage()}
                 disabled={!tableInstance.getCanNextPage()}
-                className={styles.next}
+                className="next"
               >
                 {'Next \u00BB'}
               </button>

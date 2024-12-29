@@ -23,7 +23,6 @@ function FilterFunction({ column, table }) {
         onChange={(e) => {
           column.setFilterValue(e.target.value || undefined)
         }}
-        className="g-thead-filter-dropdown"
       >
         <option value="">All</option>
         <option value="Male">Male</option>
@@ -43,7 +42,6 @@ function FilterFunction({ column, table }) {
             e.target.value === '' ? undefined : e.target.value === 'true'
           )
         }}
-        className="g-thead-filter-dropdown"
       >
         <option value="">All</option>
         <option value="true">Active</option>

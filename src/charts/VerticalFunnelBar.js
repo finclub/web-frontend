@@ -21,31 +21,19 @@ const VerticalFunnelBar = ({ height }) => {
       value: 100,
       label: 'Candidates Applied',
       subLabel: '1,000 total',
-      color: '#1f77b4'
+      color: '#2E5077'
     },
     {
       value: 75,
       label: 'Aptitude Test',
       subLabel: '750 passed',
-      color: '#ff7f0e'
+      color: '#4DA1A9'
     },
     {
       value: 50,
       label: 'Technical Interview',
       subLabel: '500 shortlisted',
-      color: '#2ca02c'
-    },
-    {
-      value: 25,
-      label: 'HR Interview',
-      subLabel: '250 final',
-      color: '#d62728'
-    },
-    {
-      value: 1,
-      label: 'Candidates Recruited',
-      subLabel: '25 hired',
-      color: '#9467bd'
+      color: '#79D7BE'
     }
   ]
 

@@ -22,11 +22,10 @@
 .label {
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
-  font-weight: 500;
+  font: var(--font-chart-funnel);
 }
 
 .label > span:nth-child(2) {
-  font-size: 0.8em;
+  font: var(--font-chart-funnel-s);
   color: #ddd;
 }

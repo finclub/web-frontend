@@ -23,12 +23,11 @@
 .label {
   color: #9b9b9b;
   margin-bottom: 5px;
-  font-size: 0.75rem;
+  font-size: var(--font-stats);
 }
 
 .value {
-  font-size: 1.125rem;
-  font-weight: 700;
+  font: var(--font-stats-s);
 }
 
 .decimal {

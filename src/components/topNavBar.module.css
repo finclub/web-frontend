@@ -6,21 +6,21 @@
 .pageNav a.router-link-active,
 .pageNav a:hover {
   cursor: pointer;
-  color: #ff5722;
-  border-bottom: 2px solid #ff5722;
+  color: var(--color-red);
+  border-bottom: 2px solid var(--color-red);
 }
 
 .pageNav a.router-link-active {
-  font-weight: 600;
+  font: var(--font-nav-active);
 }
 
 .pageNav a {
   padding: 14px 16px;
   margin: 0px 5px;
-  font-size: 0.75rem;
+  font: var(--font-nav);
   line-height: 1;
   text-decoration: none;
-  color: #ff5722;
+  color: var(--color-red);
   display: inline-flex;
   align-items: center;
   justify-content: center;
