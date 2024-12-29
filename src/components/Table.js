@@ -62,28 +62,8 @@ const Table = () => {
   return (
     <>
       <section className="table-container">
-        {/* <span className="holdings-selector-wrap">
-          <div className="su-select holdings-selector" name="holdings-selector">
-            <select>
-              <option label="All stocks" value="all">
-                All stocks
-              </option>
-              <option label="Kite only" value="kite">
-                Kite only
-              </option>
-              <option label="Smallcase" value="smallcase">
-                Smallcase
-              </option>
-              <option label="Mutual funds" value="mutualfunds">
-                Mutual funds
-              </option>
-            </select>{' '}
-            <i className="icon icon-chevron-down"></i>
-          </div>
-        </span> */}
-
         <div className="table-toolbar">
-          <div className="right-buttons">
+          <div className="left-buttons">
             <div>Visitors Page</div>
             {/* Column Hiding Start*/}
             <div>
@@ -132,7 +112,7 @@ const Table = () => {
             {/* Column Hiding End*/}
           </div>
 
-          <div className="left-buttons">
+          <div className="right-buttons">
             {/* Global Search Filter */}
             <div>
               <div className="search">
@@ -155,77 +135,79 @@ const Table = () => {
           </div>
         </div>
 
-        {/*  */}
-        <table>
-          <thead>
-            {tableInstance.getHeaderGroups().map((headerEl) => {
-              return (
-                <tr key={headerEl.id}>
-                  {headerEl.headers.map((columnEl) => {
-                    return (
-                      <th key={columnEl.id} colSpan={columnEl.colSpan}>
-                        {columnEl.isPlaceholder ? null : (
-                          <>
-                            <div style={{ display: 'flex' }}>
-                              {flexRender(
-                                columnEl.column.columnDef.header,
-                                columnEl.getContext()
-                              )}
-                              {/* Switch Sorting Buttons */}
-                              {columnEl.column.getCanSort() && (
-                                <span
-                                  onClick={columnEl.column.getToggleSortingHandler()}
-                                  style={{
-                                    cursor: 'pointer',
-                                    marginLeft: '5px'
-                                  }}
-                                >
-                                  {
+        <div className="table">
+          <table>
+            <thead>
+              {tableInstance.getHeaderGroups().map((headerEl) => {
+                return (
+                  <tr key={headerEl.id}>
+                    {headerEl.headers.map((columnEl) => {
+                      return (
+                        <th key={columnEl.id} colSpan={columnEl.colSpan}>
+                          {columnEl.isPlaceholder ? null : (
+                            <>
+                              <div style={{ display: 'flex' }}>
+                                {flexRender(
+                                  columnEl.column.columnDef.header,
+                                  columnEl.getContext()
+                                )}
+                                {/* Switch Sorting Buttons */}
+                                {columnEl.column.getCanSort() && (
+                                  <span
+                                    onClick={columnEl.column.getToggleSortingHandler()}
+                                    style={{
+                                      cursor: 'pointer',
+                                      marginLeft: '5px'
+                                    }}
+                                  >
                                     {
-                                      asc: '🔝',
-                                      desc: '🔽',
-                                      none: '⇅'
-                                    }[columnEl.column.getIsSorted() || 'none']
-                                  }
-                                </span>
-                              )}
-                            </div>
-                            {columnEl.column.getCanFilter() && (
-                              <div className="table-cell-format">
-                                <FilterFunction
-                                  column={columnEl.column}
-                                  table={tableInstance}
-                                />
+                                      {
+                                        asc: '🔝',
+                                        desc: '🔽',
+                                        none: '⇅'
+                                      }[columnEl.column.getIsSorted() || 'none']
+                                    }
+                                  </span>
+                                )}
                               </div>
-                            )}
-                          </>
-                        )}
-                      </th>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-          </thead>
-          <tbody>
-            {tableInstance.getRowModel().rows.map((rowEl) => {
-              return (
-                <tr key={rowEl.id}>
-                  {rowEl.getVisibleCells().map((cellEl) => {
-                    return (
-                      <td key={cellEl.id}>
-                        {flexRender(
-                          cellEl.column.columnDef.cell,
-                          cellEl.getContext()
-                        )}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+                              {columnEl.column.getCanFilter() && (
+                                <div className="table-cell-format">
+                                  <FilterFunction
+                                    column={columnEl.column}
+                                    table={tableInstance}
+                                  />
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </th>
+                      )
+                    })}
+                  </tr>
+                )
+              })}
+            </thead>
+            <tbody>
+              {tableInstance.getRowModel().rows.map((rowEl) => {
+                return (
+                  <tr key={rowEl.id}>
+                    {rowEl.getVisibleCells().map((cellEl) => {
+                      return (
+                        <td key={cellEl.id}>
+                          {flexRender(
+                            cellEl.column.columnDef.cell,
+                            cellEl.getContext()
+                          )}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
         {/* Selected table */}
         <div>
           <ul>

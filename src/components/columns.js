@@ -1,5 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import IndeterminateCheckbox from './IndeterminateCheckbox'
+import Actions from './Actions'
 
 const columnHelper = createColumnHelper()
 
@@ -33,6 +34,16 @@ export const columnDefWithCheckBox = [
       </div>
     )
   },
+  {
+    accessorKey: 'actions',
+    header: () => <div className="table-cell-format">Action</div>,
+    cell: ({ getValue, row }) => {
+      const id = getValue()
+      return <Actions row={row} />
+    },
+    enableColumnFilter: false,
+    enableSorting: false
+  },
   columnHelper.accessor('id', {
     header: () => <div className="table-cell-format">Id</div>,
     cell: ({ getValue, row }) => {
@@ -52,7 +63,7 @@ export const columnDefWithCheckBox = [
     accessorKey: 'first_name',
     accessorFn: (row) => `${row.first_name} ${row.last_name}`,
     header: () => <div className="table-cell-format">Name</div>,
-    cell: ({ getValue, row }) => {
+    cell: ({ getValue }) => {
       return (
         <>
           <div className="image-col-container">

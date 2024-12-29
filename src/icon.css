@@ -28,3 +28,13 @@
   background-position: center;
   background-size: contain;
 }
+
+.action-icon {
+  background-image: url("./assets/icons/action.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
