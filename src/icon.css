@@ -38,3 +38,17 @@
   background-position: center;
   background-size: contain;
 }
+
+.excel-icon {
+  background-image: url("./assets/icons/excel.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.button-label {
+  font: var(--font-button-s);
+}

@@ -155,13 +155,27 @@ tr:nth-child(even) {
   align-items: center;
   border: 1px solid var(--color-gray);
   border-radius: 0px;
-  padding: 5px;
-  width: 200px;
+  /* width: 200px; */
+  overflow: hidden;
+}
+.search input {
+  width: 100px;
+  transition: width 0.3s ease;
+}
+
+.search input:focus {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .search input:focus {
+    width: 100px;
+  }
 }
 
 .download {
   display: flex;
-  align-items: center;
+  align-items: end;
   color: #000;
 }
 
@@ -238,6 +252,7 @@ tr:nth-child(even) {
 
 /* pagination */
 .table-pagination {
+  font: var(--font-pagination);
   margin-top: 15px;
   display: flex;
   justify-content: space-between;

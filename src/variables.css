@@ -45,8 +45,12 @@
   /* vertival funnel */
   --font-chart-funnel: 500 0.75rem var(--font-primary);
   --font-chart-funnel-s: 500 0.875rem var(--font-primary);
+
+  /* Tables */
   --font-table-th: 500 0.875rem var(--font-primary);
   --font-table-td: 500 0.875rem var(--font-primary);
+  --font-button-s: 500 0.875rem var(--font-primary);
+  --font-pagination: 500 0.875rem var(--font-primary);
 
   /* Border and Radius Variables */
   --border-bottom-grey: 2px solid var(--color-gray);

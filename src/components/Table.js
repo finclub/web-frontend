@@ -68,9 +68,6 @@ const Table = () => {
             {/* Column Hiding Start*/}
             <div>
               <div className="dropdown-container" ref={toggleDropdownRef}>
-                {/* <button onClick={toggleVisibility} className="toggle-button">
-          {isToggleColVisible ? 'Hide Options' : 'Show Options'}
-        </button> */}
                 <button
                   onClick={toggleColVisibility}
                   className={`toggle-button ${
@@ -128,8 +125,8 @@ const Table = () => {
             {/* Global Search End */}
             <div>
               <a href="#" className="download">
-                <span className="download-icon"></span>
-                <span>Download</span>
+                <span className="excel-icon"></span>
+                <span className="button-label">Download</span>
               </a>
             </div>
           </div>
@@ -220,31 +217,36 @@ const Table = () => {
         {/* Pagination  */}
         <nav className="table-pagination">
           <div>
-            Showing {tableInstance.options.state.pagination.pageIndex} /
-            {tableInstance.getPageCount() - 1} pages
+            {(() => {
+              const currentPage =
+                tableInstance.options.state.pagination.pageIndex + 1
+              const rowsPerPage =
+                tableInstance.options.state.pagination.pageSize
+              const totalRows = tableInstance.getRowModel().rows.length
+
+              // Calculate start and end row numbers based on the current page
+              const startRow = (currentPage - 1) * rowsPerPage + 1
+              let endRow = currentPage * rowsPerPage
+              if (endRow > totalRows) endRow = totalRows
+
+              return `${startRow} - ${endRow}`
+            })()}
           </div>
+
           <div>
             <select
               value={tableInstance.options.state.pagination.pageSize}
               onChange={(e) => tableInstance.setPageSize(e.target.value)}
               style={{ marginRight: '10px' }}
             >
-              {[10, 25, 50].map((pageSizeEl) => {
-                return (
-                  <option key={pageSizeEl} value={pageSizeEl}>
-                    {pageSizeEl}
-                  </option>
-                )
-              })}
+              {[10, 25, 50].map((pageSizeEl) => (
+                <option key={pageSizeEl} value={pageSizeEl}>
+                  {pageSizeEl}
+                </option>
+              ))}
             </select>
 
             <div>
-              {/* <button
-                onClick={() => tableInstance.setPageIndex(0)}
-                disabled={!tableInstance.getCanPreviousPage()}
-              >
-                {'<<'}
-              </button> */}
               <button
                 onClick={() => tableInstance.previousPage()}
                 disabled={!tableInstance.getCanPreviousPage()}
@@ -252,6 +254,19 @@ const Table = () => {
               >
                 {'\u00AB Previous'}
               </button>
+            </div>
+
+            {/* Display current page number */}
+            <div
+              style={{
+                display: 'inline-block',
+                margin: '0px 10px',
+                whiteSpace: 'nowrap',
+                alignSelf: 'center'
+              }}
+            >
+              {tableInstance.options.state.pagination.pageIndex + 1} {'-'}
+              {tableInstance.getPageCount()}
             </div>
 
             <div>
@@ -262,14 +277,6 @@ const Table = () => {
               >
                 {'Next \u00BB'}
               </button>
-              {/* <button
-                onClick={() =>
-                  tableInstance.setPageIndex(tableInstance.getPageCount() - 1)
-                }
-                disabled={!tableInstance.getCanNextPage()}
-              >
-                {'>>'}
-              </button> */}
             </div>
           </div>
         </nav>
@@ -278,9 +285,6 @@ const Table = () => {
           defaultValue={tableInstance.options.state.pagination.pageIndex}
           onChange={(e) => tableInstance.setPageIndex(e.target.value)}
         /> */}
-        {/* <h4>
-          Current page size: {tableInstance.options.state.pagination.pageSize}
-        </h4> */}
       </section>
     </>
   )
