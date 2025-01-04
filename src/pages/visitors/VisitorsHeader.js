@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Modal from '../../components/modal/AddModal'
+import ModalForAdd from '../../components/modal/ModalForAdd.js'
 
 const VisitorsHeader = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -32,7 +32,11 @@ const VisitorsHeader = () => {
           Add Visitor
         </button>
         {modalOpen && (
-          <Modal isOpen={modalOpen} onClose={handleCloseModal} title={title} />
+          <ModalForAdd
+            isOpen={modalOpen}
+            onClose={handleCloseModal}
+            title={title}
+          />
         )}
       </div>
     </>

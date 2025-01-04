@@ -12,7 +12,7 @@ import FilterFunction from './FilterFunction'
 import useOutsideClick from './useOutsideClick'
 
 const Table = ({ columnDef, dataJSON }) => {
-  // const columnDefWithCheckBox = columnDef
+  console.log('table')
   const finalData = useMemo(() => dataJSON, [])
   const finalColumnDef = useMemo(() => columnDef, [])
 
@@ -62,7 +62,7 @@ const Table = ({ columnDef, dataJSON }) => {
         <div className="table-toolbar">
           <div className="left-buttons">
             {/* Global Search Filter */}
-            <div className="search">
+            <div className="search" style={{ width: '200px' }}>
               <i className="search-icon" />
               <input
                 type="search"

@@ -14,7 +14,9 @@
   --color-success: #28a745;
   --color-success-light: #cff6dd;
 
-  --color-error: #ff5722;
+  --color-error: #ff0000;
+  --color-error-border: #ffa8b5;
+
   --color-error-light: #fdecea;
 
   --color-warning: #ffc107;
@@ -22,11 +24,12 @@
   --color-red: #ff5722;
   --color-gray: #dee2e6;
   --color-black: #000000;
-  --color-blue: #007bff;
+  --color-blue: #2d79f3;
   --color-green-excel: #2e7d32;
 
   /* Typography Variables */
   /* --font-primary: "Segoe UI", Arial, sans-serif; */
+  /* --font-primary: "Segoe UI", Roboto, sans-serif; */
   --font-primary: "Open Sans", sans-serif;
   --font-secondary: "Georgia", serif;
 
@@ -56,6 +59,7 @@
 
   /* Modal */
   --font-modal-h: 500 1rem var(--font-primary);
+  --font-form-label: 500 0.8rem var(--font-primary);
 
   /* Border and Radius Variables */
   --border-bottom-grey: 2px solid var(--color-gray);

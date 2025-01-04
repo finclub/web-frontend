@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Modal from '../../components/modal/AddModal'
+import ModalForAdd from '../../components/modal/ModalForAdd.js'
 
 const MembersHeader = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -32,7 +32,11 @@ const MembersHeader = () => {
           Add Member
         </button>
         {modalOpen && (
-          <Modal isOpen={modalOpen} onClose={handleCloseModal} title={title} />
+          <ModalForAdd
+            isOpen={modalOpen}
+            onClose={handleCloseModal}
+            title={title}
+          />
         )}
       </div>
     </>

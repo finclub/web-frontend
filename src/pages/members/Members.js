@@ -5,14 +5,12 @@ import dataJSON from '../../data/data.json'
 import MembersHeader from './MembersHeader.js'
 
 const Members = () => {
-  const columnDef = members
-
   return (
     <>
       <section className="container">
         <Stats />
         <MembersHeader />
-        <Table columnDef={columnDef} dataJSON={dataJSON} />
+        <Table columnDef={members} dataJSON={dataJSON} />
       </section>
     </>
   )

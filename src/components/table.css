@@ -37,7 +37,7 @@ th {
 }
 
 td {
-  background-color: #fff;
+  /* background-color: #fff; */
   color: #666;
 }
 
@@ -159,7 +159,6 @@ tr:nth-child(even) {
   align-items: center;
   border: 1px solid var(--color-gray);
   border-radius: 0px;
-  width: 200px;
   overflow: hidden;
 }
 /* .search input {
