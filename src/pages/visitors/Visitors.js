@@ -1,10 +1,13 @@
 // import Stats from '../components/Stats'
-import TopNavBar from '../components/TopNavBar'
-import './Visitors.css'
-import BasicTable from '../components/Table'
-// import ExampleWithLocalizationProvider from '../components/ExampleWithLocalizationProvider'
+import TopNavBar from '../../components/TopNavBar.js'
+import Table from '../../components/Table.js'
+import { visitors } from '../../columnDefinations/visitorsCol.js'
+import VisitorsHeader from './VisitorsHeader.js'
+import dataJSON from '../../data/data.json'
 
 const Visitors = () => {
+  const columnDef = visitors
+
   const tabs = [
     {
       id: 1,
@@ -25,12 +28,11 @@ const Visitors = () => {
 
   return (
     <>
-      <TopNavBar tabs={tabs} />
+      {/* <TopNavBar tabs={tabs} /> */}
       <section className="container">
         {/* <Stats /> */}
-        {/* Table Section */}
-        <BasicTable />
-        {/* <ExampleWithLocalizationProvider /> */}
+        <VisitorsHeader />
+        <Table columnDef={columnDef} dataJSON={dataJSON} />
       </section>
     </>
   )

@@ -83,7 +83,7 @@ function FilterFunction({ column, table }) {
         ))}
       </datalist>
       <DebouncedInput
-        type="text"
+        type="search"
         value={columnFilterValue ?? ''}
         onChange={(value) => column.setFilterValue(value)}
         placeholder={'Search... '}

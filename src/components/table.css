@@ -1,3 +1,5 @@
+/* used globally in members, visitors table */
+
 table {
   width: 100%;
 }
@@ -51,7 +53,18 @@ tr:nth-child(even) {
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 20px;
+  padding: 0px 10px 10px 10px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 100px 100px auto;
+  grid-template-rows: auto auto;
+  padding: 10px;
+
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .table {
@@ -72,6 +85,7 @@ tr:nth-child(even) {
   align-items: end;
   gap: 10px;
 }
+
 .table-toolbar .right-buttons {
   justify-content: end;
 }
@@ -97,23 +111,13 @@ tr:nth-child(even) {
   z-index: 1; /* Ensure dropdown is above other content */
 }
 
-.toggle-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-}
-
 .dropdown-menu {
   position: absolute;
   top: 100%; /* Position directly below the toggle button */
   left: 0;
   background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  /* width: 100%; */
+  width: 125px;
   border-radius: 4px;
   padding: 10px;
   display: block; /* This could also be controlled by React state */
@@ -155,17 +159,16 @@ tr:nth-child(even) {
   align-items: center;
   border: 1px solid var(--color-gray);
   border-radius: 0px;
-  /* width: 200px; */
+  width: 200px;
   overflow: hidden;
 }
-.search input {
+/* .search input {
   width: 100px;
-  transition: width 0.3s ease;
-}
+} */
 
-.search input:focus {
+/* .search input:focus {
   width: 100%;
-}
+} */
 
 @media (max-width: 600px) {
   .search input:focus {
@@ -176,21 +179,13 @@ tr:nth-child(even) {
 .download {
   display: flex;
   align-items: end;
-  color: #000;
+  color: var(--color-green-excel);
 }
 
-/* cell formatting */
-.table-cell-format {
-  /* display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  max-width: 150px; */
-
-  /* white-space: normal;
-  word-wrap: break-word;
-  width: 25%;
-  min-width: 80px;
-  max-width: 200px; */
+.toggle-button {
+  display: flex;
+  align-items: end;
+  color: var(--color-black);
 }
 
 .image-cell-format {
@@ -203,8 +198,8 @@ tr:nth-child(even) {
 
 .image-cell-format img {
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 25px;
+  width: 25px;
 }
 
 @media (max-width: 480px) {

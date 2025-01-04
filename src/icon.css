@@ -9,8 +9,28 @@
   background-size: contain;
 }
 
+.user-icon {
+  background-image: url("./assets/icons/user.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 .search-icon {
   background-image: url("./assets/icons/search.svg");
+  width: 30px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.cross-icon {
+  background-image: url("./assets/icons/cross.svg");
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -21,6 +41,16 @@
 
 .download-icon {
   background-image: url("./assets/icons/download.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.column-icon {
+  background-image: url("./assets/icons/column.svg");
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -41,6 +71,36 @@
 
 .excel-icon {
   background-image: url("./assets/icons/excel.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.arrow-up-down-icon {
+  background-image: url("./assets/icons/arrow-up-down.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.arrow-up-icon {
+  background-image: url("./assets/icons/arrow-up.svg");
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.arrow-down-icon {
+  background-image: url("./assets/icons/arrow-down.svg");
   width: 20px;
   height: 20px;
   display: inline-block;

@@ -21,7 +21,9 @@
 
   --color-red: #ff5722;
   --color-gray: #dee2e6;
-  --color-blue: #4184f3;
+  --color-black: #000000;
+  --color-blue: #007bff;
+  --color-green-excel: #2e7d32;
 
   /* Typography Variables */
   /* --font-primary: "Segoe UI", Arial, sans-serif; */
@@ -51,6 +53,9 @@
   --font-table-td: 500 0.875rem var(--font-primary);
   --font-button-s: 500 0.875rem var(--font-primary);
   --font-pagination: 500 0.875rem var(--font-primary);
+
+  /* Modal */
+  --font-modal-h: 500 1rem var(--font-primary);
 
   /* Border and Radius Variables */
   --border-bottom-grey: 2px solid var(--color-gray);

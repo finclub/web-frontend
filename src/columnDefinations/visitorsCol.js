@@ -1,17 +1,17 @@
 import { createColumnHelper } from '@tanstack/react-table'
-import IndeterminateCheckbox from './IndeterminateCheckbox'
-import Actions from './Actions'
+import IndeterminateCheckbox from '../components/IndeterminateCheckbox'
+import Actions from '../components/Actions'
 
 const columnHelper = createColumnHelper()
 
-export const columnDefWithCheckBox = [
+export const visitors = [
   {
     id: 'select',
     //     cell: ({ getValue }) => {
-    //   return <div className="table-cell-format">{getValue()}</div>
+    //   return <div >{getValue()}</div>
     // }
     header: ({ table }) => (
-      <div className="table-cell-format">
+      <div>
         <IndeterminateCheckbox
           {...{
             checked: table.getIsAllRowsSelected(),
@@ -22,7 +22,7 @@ export const columnDefWithCheckBox = [
       </div>
     ),
     cell: ({ row }) => (
-      <div className="table-cell-format">
+      <div>
         <IndeterminateCheckbox
           {...{
             checked: row.getIsSelected(),
@@ -34,18 +34,8 @@ export const columnDefWithCheckBox = [
       </div>
     )
   },
-  {
-    accessorKey: 'actions',
-    header: () => <div className="table-cell-format">Action</div>,
-    cell: ({ getValue, row }) => {
-      const id = getValue()
-      return <Actions row={row} />
-    },
-    enableColumnFilter: false,
-    enableSorting: false
-  },
   columnHelper.accessor('id', {
-    header: () => <div className="table-cell-format">Id</div>,
+    header: () => <div>Id</div>,
     cell: ({ getValue, row }) => {
       return (
         <>
@@ -62,7 +52,7 @@ export const columnDefWithCheckBox = [
   {
     accessorKey: 'first_name',
     accessorFn: (row) => `${row.first_name} ${row.last_name}`,
-    header: () => <div className="table-cell-format">Name</div>,
+    header: () => <div>Name</div>,
     cell: ({ getValue }) => {
       return (
         <>
@@ -75,13 +65,13 @@ export const columnDefWithCheckBox = [
   },
   {
     accessorKey: 'gender',
-    header: () => <div className="table-cell-format">Gender</div>,
+    header: () => <div>Gender</div>,
     filterFn: 'equalsString',
     cell: ({ getValue }) => {
-      return <div className="table-cell-format">{getValue()}</div>
+      return <div>{getValue()}</div>
     }
     // header: ({ column }) => {
-    //   return <div className="table-cell-format">{column.columnDef.header}</div>
+    //   return <div >{column.columnDef.header}</div>
     // }
     //  column }) => <em>{column.columnDef.header
 
@@ -98,16 +88,16 @@ export const columnDefWithCheckBox = [
   },
   {
     accessorKey: 'email',
-    header: () => <div className="table-cell-format">Email</div>,
+    header: () => <div>Email</div>,
     cell: ({ getValue }) => {
-      return <div className="table-cell-format">{getValue()}</div>
+      return <div>{getValue()}</div>
     }
   },
   {
     accessorKey: 'date',
-    header: () => <div className="table-cell-format">Date</div>,
+    header: () => <div>Date</div>,
     cell: ({ getValue }) => {
-      return <div className="table-cell-format">{getValue()}</div>
+      return <div>{getValue()}</div>
     }
     // cell: ({ getValue }) => moment(new Date(getValue())).format('MMM Do YY')
   },
@@ -123,12 +113,12 @@ export const columnDefWithCheckBox = [
   // },
   {
     accessorKey: 'status',
-    header: () => <div className="table-cell-format">Status</div>,
+    header: () => <div>Status</div>,
     cell: ({ getValue }) => {
       const isActive = getValue()
       return (
         <>
-          <div className=" table-cell-format status">
+          <div className="status">
             <span className={`${isActive ? 'active' : 'in-active'}`}>
               {isActive ? 'Active' : 'Inactive'}
             </span>
@@ -136,5 +126,15 @@ export const columnDefWithCheckBox = [
         </>
       )
     }
+  },
+  {
+    accessorKey: 'actions',
+    header: () => <div>Action</div>,
+    cell: ({ getValue, row }) => {
+      const id = getValue()
+      return <Actions row={row} />
+    },
+    enableColumnFilter: false,
+    enableSorting: false
   }
 ]

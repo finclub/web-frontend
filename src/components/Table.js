@@ -8,14 +8,13 @@ import {
   getFilteredRowModel,
   getPaginationRowModel
 } from '@tanstack/react-table'
-import { columnDefWithCheckBox } from './columns'
-import dataJSON from '../data/data.json'
 import FilterFunction from './FilterFunction'
 import useOutsideClick from './useOutsideClick'
 
-const Table = () => {
+const Table = ({ columnDef, dataJSON }) => {
+  // const columnDefWithCheckBox = columnDef
   const finalData = useMemo(() => dataJSON, [])
-  const finalColumnDef = useMemo(() => columnDefWithCheckBox, [])
+  const finalColumnDef = useMemo(() => columnDef, [])
 
   const [sorting, setSorting] = useState([])
   const [filtering, setFiltering] = useState('')
@@ -55,79 +54,73 @@ const Table = () => {
     }
   })
 
-  const toggleColVisibility = () => {
-    setIsToggleColVisible(!isToggleColVisible)
-  }
+  const toggleColVisibility = () => setIsToggleColVisible(!isToggleColVisible)
 
   return (
     <>
       <section className="table-container">
         <div className="table-toolbar">
           <div className="left-buttons">
-            <div>Visitors Page</div>
-            {/* Column Hiding Start*/}
-            <div>
-              <div className="dropdown-container" ref={toggleDropdownRef}>
-                <button
-                  onClick={toggleColVisibility}
-                  className={`toggle-button ${
-                    isToggleColVisible ? 'button-open' : 'button-closed'
-                  }`}
-                >
-                  Toggle
-                </button>
-                {
-                  <div
-                    className={`dropdown-menu ${
-                      isToggleColVisible ? 'show' : 'hide'
-                    }`}
-                  >
-                    <label className="checkbox-option">
-                      <input
-                        type="checkbox"
-                        checked={tableInstance.getIsAllColumnsVisible()}
-                        onChange={tableInstance.getToggleAllColumnsVisibilityHandler()}
-                      />
-                      <span>Toggle All</span>
-                    </label>
-                    {tableInstance.getAllLeafColumns().map((column) => (
-                      <div key={column.id}>
-                        <label className="checkbox-option">
-                          <input
-                            type="checkbox"
-                            checked={column.getIsVisible()}
-                            onChange={column.getToggleVisibilityHandler()}
-                          />
-                          <span>{column.id}</span>
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                }
-              </div>
+            {/* Global Search Filter */}
+            <div className="search">
+              <i className="search-icon" />
+              <input
+                type="search"
+                placeholder="Search.."
+                value={filtering}
+                onChange={(e) => setFiltering(e.target.value)}
+              />
             </div>
-            {/* Column Hiding End*/}
+            {/* Global Search End */}
           </div>
 
           <div className="right-buttons">
-            {/* Global Search Filter */}
-            <div>
-              <div className="search">
-                <span className="search-icon"></span>
-                <input
-                  type="search"
-                  placeholder="Search.."
-                  value={filtering}
-                  onChange={(e) => setFiltering(e.target.value)}
-                />
-              </div>
+            {/* Column Hiding Start*/}
+            <div className="dropdown-container" ref={toggleDropdownRef}>
+              <button
+                onClick={toggleColVisibility}
+                className={`toggle-button minimal-button ${
+                  isToggleColVisible ? 'button-open' : 'button-closed'
+                }`}
+              >
+                <i className="column-icon" />
+                <span className="button-label"> Select columns</span>
+              </button>
+              {
+                <div
+                  className={`dropdown-menu ${
+                    isToggleColVisible ? 'show' : 'hide'
+                  }`}
+                >
+                  <label className="checkbox-option">
+                    <input
+                      type="checkbox"
+                      checked={tableInstance.getIsAllColumnsVisible()}
+                      onChange={tableInstance.getToggleAllColumnsVisibilityHandler()}
+                    />
+                    <span>Toggle All</span>
+                  </label>
+                  {tableInstance.getAllLeafColumns().map((column) => (
+                    <div key={column.id}>
+                      <label className="checkbox-option">
+                        <input
+                          type="checkbox"
+                          checked={column.getIsVisible()}
+                          onChange={column.getToggleVisibilityHandler()}
+                        />
+                        <span>{column.id}</span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              }
             </div>
-            {/* Global Search End */}
+            {/* Column Hiding End*/}
             <div>
-              <a href="#" className="download">
+              <button className="minimal-button download">
                 <span className="excel-icon"></span>
                 <span className="button-label">Download</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -159,9 +152,11 @@ const Table = () => {
                                   >
                                     {
                                       {
-                                        asc: '🔝',
-                                        desc: '🔽',
-                                        none: '⇅'
+                                        asc: <i className="arrow-up-icon" />,
+                                        desc: <i className="arrow-down-icon" />,
+                                        none: (
+                                          <i className="arrow-up-down-icon" />
+                                        )
                                       }[columnEl.column.getIsSorted() || 'none']
                                     }
                                   </span>

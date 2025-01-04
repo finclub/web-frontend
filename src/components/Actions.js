@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import useOutsideClick from './useOutsideClick'
 import styles from './actions.module.css'
 
-const Actions = ({ row }) => {
+const Actions = () => {
   const [showOptions, setShowOptions] = useState(false)
   const actionRef = useRef(null)
 
