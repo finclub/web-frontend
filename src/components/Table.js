@@ -13,6 +13,7 @@ import useOutsideClick from './useOutsideClick'
 
 const Table = ({ columnDef, dataJSON }) => {
   console.log('table')
+
   const finalData = useMemo(() => dataJSON, [])
   const finalColumnDef = useMemo(() => columnDef, [])
 

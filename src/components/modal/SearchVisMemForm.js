@@ -21,13 +21,6 @@ const SearchVisMemForm = ({ onSearchResults }) => {
       <button className="button" onClick={handleSearch}>
         Search
       </button>
-      {/* {searchResults.length > 0 && (
-        <div>
-          {searchResults.map((item, index) => (
-            <div key={index}>{item}</div>
-          ))}
-        </div>
-      )} */}
     </div>
   )
 }

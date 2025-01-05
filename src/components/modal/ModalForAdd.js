@@ -32,29 +32,31 @@ function ModalFooter({ children }) {
 
 function ModalForAdd({ isOpen, onClose }) {
   const [activeView, setActiveView] = useState('searchForm')
+  const [searchResults, setSearchResults] = useState([])
 
   const handleSearchResults = (results) => {
+    setSearchResults(results)
     setActiveView(results.length > 0 ? 'searchResults' : 'searchNotFound')
   }
 
   const viewComponents = {
     searchForm: <SearchVisMemForm onSearchResults={handleSearchResults} />,
-    searchResults: <div>result view</div>,
+    searchResults: <div>result view {searchResults}</div>,
     searchNotFound: (
       <>
         <SearchVisMemForm onSearchResults={handleSearchResults} />
         <div className={styles.notFoundPanel}>
           <button
             className="button"
-            onClick={() => setActiveView('memberAddForm')}
-          >
-            Add Member
-          </button>
-          <button
-            className="button"
             onClick={() => setActiveView('visitorAddForm')}
           >
             Add Visitor
+          </button>
+          <button
+            className="button"
+            onClick={() => setActiveView('memberAddForm')}
+          >
+            Add Member
           </button>
         </div>
       </>

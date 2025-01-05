@@ -105,7 +105,7 @@ const AddMemberForm = () => {
                             : field.value === '' && styles.Placeholder
                         }`}
                       >
-                        <option value="" disabled selected>
+                        <option defaultValue="" disabled>
                           Select Gender
                         </option>
                         <option value="male">Male</option>

@@ -1,98 +1,225 @@
-import { Formik, Form, Field } from 'formik'
-import * as Yup from 'yup'
+import React from 'react'
 import styles from './addVisMemform.module.css'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
-const visitorValidationSchema = Yup.object().shape({
-  firstName: Yup.string().required('First name is required'),
-  lastName: Yup.string().required('Last name is required'),
-  age: Yup.number()
-    .min(18, 'Must be at least 18 years old')
-    .required('Age is required'),
-  phoneNumber: Yup.string()
-    .matches(
-      /\d{3}-\d{3}-\d{4}/,
-      'Phone number must be in the format XXX-XXX-XXXX'
-    )
-    .required('Phone number is required'),
-  email: Yup.string()
-    .email('Invalid email format')
-    .required('Email is required')
+const validationSchema = Yup.object({
+  name: Yup.string().required('Required'),
+  mobile: Yup.string()
+    .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
+    .required('Required'),
+  dob: Yup.date().required('Required'),
+  reference: Yup.string().required('Required'),
+  gender: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string()
+    .min(8, 'Must be at least 8 characters')
+    .required('Required')
 })
 
+const initialValues = {
+  name: '',
+  mobile: '',
+  gender: '',
+  dob: '',
+  reference: '',
+  assignedTo: '',
+  email: '',
+  password: ''
+}
+
 const AddVisitorForm = () => {
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    age: '',
-    phoneNumber: '',
-    email: ''
+  const handleSubmit = (values, { setSubmitting }) => {
+    alert(JSON.stringify(values, null, 2))
+    setSubmitting(false)
   }
-
-  const handleSubmit = (values) => {
-    console.log('Form data', values)
-  }
-
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={visitorValidationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ errors, touched }) => (
-        <Form className={styles.formContainer}>
-          <Field
-            name="firstName"
-            placeholder="First Name"
-            className={styles.input}
-          />
-          {errors.firstName && touched.firstName ? (
-            <div className={styles.error}>{errors.firstName}</div>
-          ) : null}
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form>
+          <div className={styles.form}>
+            <div className={styles.row}>
+              <div>
+                <label htmlFor="name">Name *</label>
+                <div className={styles.inputForm}>
+                  <Field name="name">
+                    {({ field, form }) => (
+                      <input
+                        {...field}
+                        type="text"
+                        placeholder="Name"
+                        className={`${styles.input} ${
+                          form.touched.name &&
+                          form.errors.name &&
+                          styles.errorInput
+                        }`}
+                      />
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="name"
+                    component="span"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
 
-          <Field
-            name="lastName"
-            placeholder="Last Name"
-            className={styles.input}
-          />
-          {errors.lastName && touched.lastName ? (
-            <div className={styles.error}>{errors.lastName}</div>
-          ) : null}
+              <div>
+                <label htmlFor="mobile">Mobile *</label>
+                <div className={styles.inputForm}>
+                  <Field name="mobile">
+                    {({ field, form }) => (
+                      <input
+                        {...field}
+                        type="tel"
+                        placeholder="Enter your Mobile Number"
+                        className={`${styles.input} ${
+                          form.touched.mobile &&
+                          form.errors.mobile &&
+                          styles.errorInput
+                        }`}
+                      />
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="mobile"
+                    component="span"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
 
-          <Field
-            name="age"
-            type="number"
-            placeholder="Age"
-            className={styles.input}
-          />
-          {errors.age && touched.age ? (
-            <div className={styles.error}>{errors.age}</div>
-          ) : null}
+              <div>
+                <label htmlFor="gender">Gender *</label>
+                <div className={styles.inputForm}>
+                  <Field name="gender">
+                    {({ field, form }) => (
+                      <select
+                        {...field}
+                        className={`${styles.input} ${
+                          form.touched.gender && form.errors.gender
+                            ? styles.errorInput
+                            : field.value === '' && styles.Placeholder
+                        }`}
+                      >
+                        <option defaultValue="" disabled>
+                          Select Gender
+                        </option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                      </select>
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="gender"
+                    component="span"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
+            </div>
 
-          <Field
-            name="phoneNumber"
-            placeholder="Phone Number"
-            className={styles.input}
-          />
-          {errors.phoneNumber && touched.phoneNumber ? (
-            <div className={styles.error}>{errors.phoneNumber}</div>
-          ) : null}
+            <div className={styles.row}>
+              <div>
+                <label htmlFor="reference">Reference *</label>
+                <div className={styles.inputForm}>
+                  <Field name="reference">
+                    {({ field, form }) => (
+                      <select
+                        {...field}
+                        className={`${styles.input} ${
+                          form.touched.reference &&
+                          form.errors.reference &&
+                          styles.errorInput
+                        }`}
+                      >
+                        <option value="">Select Reference</option>
+                        <option value="walkIn">Walk-in</option>
+                        <option value="reference">Reference</option>
+                        <option value="promotion">Promotion</option>
+                      </select>
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="reference"
+                    component="span"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
 
-          <Field
-            name="email"
-            type="email"
-            placeholder="Email"
-            className={styles.input}
-          />
-          {errors.email && touched.email ? (
-            <div className={styles.error}>{errors.email}</div>
-          ) : null}
+              <div>
+                <label htmlFor="assignedTo">Assigned to staff</label>
+                <div className={styles.inputForm}>
+                  <Field name="assignedTo">
+                    {({ field, form }) => (
+                      <select
+                        {...field}
+                        className={`${styles.input} ${
+                          form.touched.reference &&
+                          form.errors.reference &&
+                          styles.errorInput
+                        }`}
+                      >
+                        <option value="">Select Reference</option>
+                        <option value="walkIn">Walk-in</option>
+                        <option value="reference">Reference</option>
+                        <option value="promotion">Promotion</option>
+                      </select>
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="assignedTo"
+                    component="span"
+                    className={styles.error}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email">Email</label>
+                <div className={styles.inputForm}>
+                  <Field
+                    type="email"
+                    name="email"
+                    placeholder="Enter your Email"
+                    className={styles.input}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="dob">Date of Birth</label>
+                <div className={styles.inputForm}>
+                  <Field name="dob" type="date" className={styles.input} />
+                </div>
+              </div>
+            </div>
+            {/* Additional UI components commented out can be similarly updated */}
+            <div className={styles.separator}>
+              <hr className={styles.line} />
+              <span>Plan details</span>
+              <hr className={styles.line} />
+            </div>
+
+            <div className={styles.separator}>
+              <hr className={styles.line} />
+              <span>Address</span>
+              <hr className={styles.line} />
+            </div>
+          </div>
 
           <button type="submit" className={styles.submitButton}>
             Submit
           </button>
         </Form>
-      )}
-    </Formik>
+      </Formik>
+    </>
   )
 }
 
