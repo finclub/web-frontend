@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Stats from '../../components/Stats.js'
+// import Stats from '../../components/Stats.js'
 import Table from '../../components/Table.js'
 import { members } from '../../columnDefinations/membersCol.js'
 import MembersHeader from './MembersHeader.js'

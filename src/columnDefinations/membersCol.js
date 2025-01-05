@@ -37,7 +37,7 @@ export const members = [
       return (
         <>
           <div className="image-cell-format">
-            <img alt="avatar" src={row.original.avatar} loading="lazy" />
+            <img alt="avatar" src={row.original.profileImage} loading="lazy" />
             <span>{getValue()}</span>
           </div>
         </>
@@ -47,8 +47,8 @@ export const members = [
     enableSorting: false
   }),
   {
-    accessorKey: 'first_name',
-    accessorFn: (row) => `${row.first_name} ${row.last_name}`,
+    accessorKey: 'fullName',
+    // accessorFn: (row) => `${row.first_name} ${row.last_name}`,
     header: () => <div>Name</div>,
     cell: ({ getValue }) => {
       return (

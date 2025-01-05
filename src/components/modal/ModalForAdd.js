@@ -3,6 +3,7 @@ import styles from './modalForAdd.module.css'
 import SearchVisMemForm from './SearchVisMemForm'
 import AddMemberForm from './AddMemberForm'
 import AddVisitorForm from './AddVisitorForm'
+import ResultViewCard from './ResultViewCard'
 
 // ModalHeader Component
 function ModalHeader({ title, onClose }) {
@@ -41,7 +42,12 @@ function ModalForAdd({ isOpen, onClose }) {
 
   const viewComponents = {
     searchForm: <SearchVisMemForm onSearchResults={handleSearchResults} />,
-    searchResults: <div>result view {searchResults}</div>,
+    searchResults: (
+      <>
+        <SearchVisMemForm onSearchResults={handleSearchResults} />
+        <ResultViewCard searchResults={searchResults} />
+      </>
+    ),
     searchNotFound: (
       <>
         <SearchVisMemForm onSearchResults={handleSearchResults} />
