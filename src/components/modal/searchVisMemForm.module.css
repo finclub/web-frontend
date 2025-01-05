@@ -4,13 +4,6 @@
   align-items: center;
 }
 
-.notFoundPanel {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 50px;
-}
-
 .search {
   display: flex;
   align-items: center;

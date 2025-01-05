@@ -32,6 +32,9 @@
 .errorInput {
   border-color: var(--color-error-border) !important;
 }
+.Placeholder {
+  color: var(--color-placeholder-gray);
+}
 
 .input {
   border-radius: 4px;
@@ -51,7 +54,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   align-items: start;
   margin-bottom: 15px;

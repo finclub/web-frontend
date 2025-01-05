@@ -3,38 +3,41 @@ import styles from './addVisMemform.module.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
+const validationSchema = Yup.object({
+  name: Yup.string().required('Required'),
+  mobile: Yup.string()
+    .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
+    .required('Required'),
+  dob: Yup.date().required('Required'),
+  reference: Yup.string().required('Required'),
+  gender: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string()
+    .min(8, 'Must be at least 8 characters')
+    .required('Required')
+})
+
+const initialValues = {
+  name: '',
+  mobile: '',
+  dob: '',
+  reference: '',
+  gender: '',
+  email: '',
+  password: ''
+}
+
 const AddMemberForm = () => {
+  const handleSubmit = (values, { setSubmitting }) => {
+    alert(JSON.stringify(values, null, 2))
+    setSubmitting(false)
+  }
   return (
     <>
       <Formik
-        initialValues={{
-          name: '',
-          mobile: '',
-          dob: '',
-          reference: '',
-          gender: '',
-          email: '',
-          password: ''
-        }}
-        validationSchema={Yup.object({
-          name: Yup.string().required('Required'),
-          mobile: Yup.string()
-            .matches(/^[0-9]{10}$/, 'Must be exactly 10 digits')
-            .required('Required'),
-          dob: Yup.date().required('Required'),
-          reference: Yup.string().required('Required'),
-          gender: Yup.string().required('Required'),
-          email: Yup.string()
-            .email('Invalid email address')
-            .required('Required'),
-          password: Yup.string()
-            .min(8, 'Must be at least 8 characters')
-            .required('Required')
-        })}
-        onSubmit={(values, { setSubmitting }) => {
-          alert(JSON.stringify(values, null, 2))
-          setSubmitting(false)
-        }}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
       >
         <Form>
           <div className={styles.form}>
@@ -88,9 +91,7 @@ const AddMemberForm = () => {
                   />
                 </div>
               </div>
-            </div>
 
-            <div className={styles.row}>
               <div>
                 <label htmlFor="gender">Gender *</label>
                 <div className={styles.inputForm}>
@@ -99,12 +100,14 @@ const AddMemberForm = () => {
                       <select
                         {...field}
                         className={`${styles.input} ${
-                          form.touched.gender &&
-                          form.errors.gender &&
-                          styles.errorInput
+                          form.touched.gender && form.errors.gender
+                            ? styles.errorInput
+                            : field.value === '' && styles.Placeholder
                         }`}
                       >
-                        <option value="">Select Gender</option>
+                        <option value="" disabled selected>
+                          Select Gender
+                        </option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
@@ -118,7 +121,9 @@ const AddMemberForm = () => {
                   />
                 </div>
               </div>
+            </div>
 
+            <div className={styles.row}>
               <div>
                 <label htmlFor="reference">Reference *</label>
                 <div className={styles.inputForm}>
@@ -146,9 +151,7 @@ const AddMemberForm = () => {
                   />
                 </div>
               </div>
-            </div>
 
-            <div className={styles.row}>
               <div>
                 <label htmlFor="email">Email</label>
                 <div className={styles.inputForm}>
@@ -181,6 +184,10 @@ const AddMemberForm = () => {
               <hr className={styles.line} />
             </div>
           </div>
+
+          <button type="submit" className={styles.submitButton}>
+            Submit
+          </button>
         </Form>
       </Formik>
     </>

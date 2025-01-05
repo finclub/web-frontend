@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import styles from './modalForAdd.module.css'
 import SearchVisMemForm from './SearchVisMemForm'
 import AddMemberForm from './AddMemberForm'
@@ -30,63 +30,59 @@ function ModalFooter({ children }) {
   return <div className={styles.modalFooter}>{children}</div>
 }
 
-function ModalForAdd({ isOpen, onClose, title }) {
-  const [activeView, setActiveView] = useState('search')
+function ModalForAdd({ isOpen, onClose }) {
+  const [activeView, setActiveView] = useState('searchForm')
 
   const handleSearchResults = (results) => {
-    if (results.length > 0) {
-      setActiveView('result')
-    } else {
-      setActiveView('notFound')
-    }
+    setActiveView(results.length > 0 ? 'searchResults' : 'searchNotFound')
   }
 
-  const renderContent = () => {
-    switch (activeView) {
-    case 'search':
-      return <SearchVisMemForm onSearchResults={handleSearchResults} />
-    case 'result':
-      return <div>result view</div>
-    case 'notFound':
-      return (
+  const viewComponents = {
+    searchForm: <SearchVisMemForm onSearchResults={handleSearchResults} />,
+    searchResults: <div>result view</div>,
+    searchNotFound: (
+      <>
+        <SearchVisMemForm onSearchResults={handleSearchResults} />
         <div className={styles.notFoundPanel}>
           <button
             className="button"
-            onClick={() => setActiveView('addMember')}
+            onClick={() => setActiveView('memberAddForm')}
           >
-              Add Member
+            Add Member
           </button>
           <button
             className="button"
-            onClick={() => setActiveView('addVisitor')}
+            onClick={() => setActiveView('visitorAddForm')}
           >
-              Add Visitor
+            Add Visitor
           </button>
         </div>
-      )
-    case 'addMember':
-      return <AddMemberForm />
-    case 'addVisitor':
-      return <AddVisitorForm />
-    default:
-      return null
-    }
+      </>
+    ),
+    memberAddForm: <AddMemberForm />,
+    visitorAddForm: <AddVisitorForm />
   }
+
+  const modalTitles = {
+    searchForm: 'Search',
+    searchResults: 'Found',
+    searchNotFound: 'No data Found',
+    memberAddForm: 'Member',
+    visitorAddForm: 'Visitor'
+  }
+
+  const modalTitle = useMemo(
+    () => modalTitles[activeView] || 'Modal',
+    [activeView]
+  )
 
   if (!isOpen) return null
 
   return (
     <div className={styles.modal}>
       <div className={styles.modalWrapper}>
-        <ModalHeader title={title} onClose={onClose} />
-        <ModalContent>
-          {activeView === 'result' ||
-            (activeView === 'notFound' && (
-              <SearchVisMemForm onSearchResults={handleSearchResults} />
-            ))}
-
-          {renderContent()}
-        </ModalContent>
+        <ModalHeader title={modalTitle} onClose={onClose} />
+        <ModalContent>{viewComponents[activeView] || null}</ModalContent>
         <ModalFooter>
           {/* Footer content or leave empty if not needed */}
         </ModalFooter>
