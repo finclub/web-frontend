@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './variables.css';
 import './index.css';
-// import './table.css'
 import './icon.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
+import axios from 'axios'
+import config from './appConfig';
+
+const setupAxios = () => {
+  axios.defaults.baseURL = config.baseURL;
+};
+setupAxios();
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

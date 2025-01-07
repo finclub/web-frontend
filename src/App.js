@@ -9,12 +9,19 @@ import Revenue from './pages/sales/Revenue'
 import Profile from './pages/Profile'
 // import Modal from './components/Modal'
 // import Login from './pages/Login'
+import Registration from './pages/authentication/registration/Registration'
+import Login from './pages/authentication/login/Login'
+import LandingPage from './pages/landingpage/LandingPage'
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
+          <Route path="/landingpage" element={<LandingPage />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/login" element={<Login />} />
+
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
