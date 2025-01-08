@@ -44,6 +44,7 @@ const Login = () => {
       setTimeout(() => {
         setShowPopup(false)
         navigate('/app/dashboard') // Redirect to dashboard
+
       }, 800)
     } catch (error) {
       console.error('Error during login:', error)

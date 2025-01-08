@@ -13,7 +13,7 @@ const Visitors = () => {
     let isMounted = true // Flag to check component mount status
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/visitors')
+        const response = await axios.get('/visitors')
         if (isMounted) {
           setData(response.data)
           setLoading(false)

@@ -29,6 +29,7 @@ const SearchVisMemForm = ({ onSearchResults }) => {
       const results = res.data || []
       onSearchResults(results)
     } catch (error) {
+      onSearchResults([])
     } finally {
       setLoading(false)
     }
@@ -69,7 +70,7 @@ const SearchVisMemForm = ({ onSearchResults }) => {
             disabled={loading}
             style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
           >
-            {loading ? 'Searching...' : 'Search'}
+            {/* {loading ? 'Searching...' : 'Search'} */}Search
           </button>
         </div>
       </Form>

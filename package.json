@@ -23,7 +23,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:m": "react-scripts start --host 0.0.0.0",
     "build": "react-scripts build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix ",
