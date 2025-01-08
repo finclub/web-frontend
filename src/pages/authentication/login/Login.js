@@ -1,5 +1,5 @@
 // src\pages\authentication\login\Login.js
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -38,9 +38,13 @@ const Login = () => {
 
       setShowPopup(true)
 
+      // Save the authentication token or session info
+      localStorage.setItem('authToken', data.data.token)
+
       setTimeout(() => {
         setShowPopup(false)
-        navigate('/dashboard') // Redirect to dashboard
+        navigate('/app/dashboard') // Redirect to dashboard
+
       }, 800)
     } catch (error) {
       console.error('Error during login:', error)

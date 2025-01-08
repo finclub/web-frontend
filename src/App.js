@@ -12,33 +12,34 @@ import Profile from './pages/Profile'
 import Registration from './pages/authentication/registration/Registration'
 import Login from './pages/authentication/login/Login'
 import LandingPage from './pages/landingpage/LandingPage'
+import PrivateRoute from './components/authentication/PrivateRoute'
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/landingpage" element={<LandingPage />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/login" element={<Login />} />
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/auth/register" element={<Registration />} />
+        <Route path="/auth/login" element={<Login />} />
 
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/visitors" element={<Visitors />} />
-            <Route path="/visitors/new/:visitorId" element={<AddVisitor />} />
+        {/* Private Routes */}
+        <Route path="/app" element={ <PrivateRoute> <MainLayout /> </PrivateRoute> }>
+          <Route index element={<Dashboard />} /> {/* Default route for /app */}
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="visitors" element={<Visitors />} />
+          <Route path="visitors/new/:visitorId" element={<AddVisitor />} />
+          <Route path="members" element={<Members />} />
+          <Route path="sales/invoices" element={<Revenue />} />
+          <Route path="sales/dues" element={<Revenue />} />
+          <Route path="sales/revenue" element={<Revenue />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
 
-            <Route path="/members" element={<Members />} />
-            {/* <Route path="/plans" element={<Modal />} /> */}
-            <Route path="/sales/invoices" element={<Revenue />} />
-            <Route path="/sales/dues" element={<Revenue />} />
-            <Route path="/sales/revenue" element={<Revenue />} />
-            <Route path="profile" element={<Profile />} />
-          </Route>
-          {/* <Route path="/login" element={<Login />} /> */}
-        </Routes>
-      </Router>
-    </>
+        {/* Catch-All for undefined routes */}
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+      </Routes>
+    </Router>
   )
 }
 

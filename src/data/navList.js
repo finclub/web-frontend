@@ -10,60 +10,60 @@ export const navList = [
     _id: 1,
     name: 'Dashboard',
     icon: dashboard,
-    path: '/dashboard'
+    path: '/app/dashboard'
   },
   {
     _id: 2,
     name: 'Visitors',
     icon: visitors,
-    path: '/visitors'
+    path: '/app/visitors'
   },
   {
     _id: 3,
     name: 'Members',
     icon: members,
-    path: '/members'
+    path: '/app/members'
   },
   {
     _id: 4,
     name: 'Plans',
     icon: members,
-    path: '/plans'
+    path: '/app/plans'
   },
   {
     _id: 5,
     name: 'Staff',
     icon: members,
-    path: '/staff'
+    path: '/app/staff'
   },
   {
     _id: 6,
     name: 'Sales',
     icon: sales,
-    path: '/sales/invoices'
+    path: '/app/sales/invoices'
   },
   {
     _id: 7,
     name: 'Analytics',
     icon: sales,
-    path: '/sales'
+    path: '/app/sales'
   },
   {
     _id: 8,
     name: 'Reports',
     icon: sales,
-    path: '/sales'
+    path: '/app/sales'
   },
   {
     _id: 9,
     name: 'Profile',
     icon: profile,
-    path: '/profile'
+    path: '/app/profile'
   },
   {
     _id: 10,
     name: 'Help',
     icon: help,
-    path: '/help'
+    path: '/app/help'
   }
 ]

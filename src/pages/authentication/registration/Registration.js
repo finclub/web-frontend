@@ -1,5 +1,5 @@
 // src\pages\authentication\registration\Registration.js
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -47,7 +47,9 @@ const Register = () => {
 
       setTimeout(() => {
         setShowPopup(false)
-        navigate('/dashboard')
+
+        navigate('/auth/login')
+
       }, 2000)
     } catch (error) {
       console.error('Error during registration:', error)

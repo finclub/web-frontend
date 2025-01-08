@@ -1,5 +1,5 @@
 // src/pages/LandingPage.js
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 import styles from './LandingPage.module.css'
 
@@ -9,8 +9,8 @@ const LandingPage = () => {
       <header className={styles.header}>
         <h1 className={styles.logo}>Gym Management App</h1>
         <nav className={styles.nav}>
-          <Link to="/login" className={styles.navLink}>Login</Link>
-          <Link to="/register" className={styles.navLink}>Register</Link>
+          <Link to="/auth/login" className={styles.navLink}>Login</Link>
+          <Link to="/auth/register" className={styles.navLink}>Register</Link>
         </nav>
       </header>
 
@@ -18,7 +18,7 @@ const LandingPage = () => {
         <div className={styles.heroText}>
           <h2>Streamline Your Gym Operations</h2>
           <p>Effortlessly manage members, subscriptions, and staff with our all-in-one gym management platform.</p>
-          <Link to="/register" className={styles.heroButton}>Get Started</Link>
+          <Link to="/auth/register" className={styles.heroButton}>Get Started</Link>
         </div>
         <div className={styles.heroImage}>
           <img src="/images/gym-hero.png" alt="Gym Management" />
